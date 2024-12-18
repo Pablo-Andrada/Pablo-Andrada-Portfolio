@@ -1,11 +1,282 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Footer from "../components/Footer.astro";
+import JobTimeline from "../components/JobTimeline.astro";
+import Navbar from "../components/Navbar.astro";
+import Project from "../components/Project.astro";
+import Skill from "../components/Skill.astro";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const SKILLS: Skill[] = [
+	{
+		name: "JavaScript",
+		iconUrl: "/icons/javascript.png",
+	},
+	{
+		name: "TypeScript",
+		iconUrl: "/icons/typescript.png",
+	},
+	{
+		name: "TailwindCSS",
+		iconUrl: "/icons/tailwindcss.png",
+	},
+	{
+		name: "React",
+		iconUrl: "/icons/react.png",
+	},
+	{
+		name: "HTML5",
+		iconUrl: "/icons/html.svg",
+	},
+	{
+		name: "CSS3",
+		iconUrl: "/icons/css.svg",
+	},
+	{
+		name: "PostgreSQL",
+		iconUrl: "/icons/postgresql.png",
+	},
+	{
+		name: "Git",
+		iconUrl: "/icons/git.png",
+	},
+];
+
+const PROJECTS: Project[] = [
+	{
+		title: "Project title",
+		urlImg: "/project1.jpg",
+		description:
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aperiam voluptatem quisquam illo laborum facilis reprehenderit! Ut impedit necessitatibus suscipit vel sapiente, saepe ratione. Labore impedit vel expedita nobis necessitatibus.",
+		link: "https://example.com",
+		usedSkills: [
+			{
+				name: "JavaScript",
+				iconUrl: "/icons/javascript.png",
+			},
+			{
+				name: "CSS3",
+				iconUrl: "/icons/css.svg",
+			},
+			{
+				name: "React",
+				iconUrl: "/icons/react.png",
+			},
+		],
+	},
+	{
+		title: "Project title",
+		urlImg: "/project2.jpg",
+		description:
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aperiam voluptatem quisquam illo laborum facilis reprehenderit! Ut impedit necessitatibus suscipit vel sapiente, saepe ratione. Labore impedit vel expedita nobis necessitatibus.",
+		link: "https://example.com",
+		usedSkills: [
+			{
+				name: "JavaScript",
+				iconUrl: "/icons/javascript.png",
+			},
+			{
+				name: "CSS3",
+				iconUrl: "/icons/css.svg",
+			},
+			{
+				name: "React",
+				iconUrl: "/icons/react.png",
+			},
+		],
+	},
+	{
+		title: "Project title",
+		urlImg: "/project3.jpg",
+		description:
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aperiam voluptatem quisquam illo laborum facilis reprehenderit! Ut impedit necessitatibus suscipit vel sapiente, saepe ratione. Labore impedit vel expedita nobis necessitatibus.",
+		link: "https://example.com",
+		usedSkills: [
+			{
+				name: "JavaScript",
+				iconUrl: "/icons/javascript.png",
+			},
+			{
+				name: "CSS3",
+				iconUrl: "/icons/css.svg",
+			},
+			{
+				name: "React",
+				iconUrl: "/icons/react.png",
+			},
+		],
+	},
+	{
+		title: "Project title",
+		urlImg: "/project4.jpg",
+		description:
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aperiam voluptatem quisquam illo laborum facilis reprehenderit! Ut impedit necessitatibus suscipit vel sapiente, saepe ratione. Labore impedit vel expedita nobis necessitatibus.",
+		link: "https://example.com",
+		usedSkills: [
+			{
+				name: "JavaScript",
+				iconUrl: "/icons/javascript.png",
+			},
+			{
+				name: "CSS3",
+				iconUrl: "/icons/css.svg",
+			},
+			{
+				name: "React",
+				iconUrl: "/icons/react.png",
+			},
+		],
+	},
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Pablo Andrada | FullStack Web Developer">
+	<header
+		id="inicio"
+		class="h-dvh bg-[url('/fondo.webp')] bg-cover bg-center flex flex-col justify-between">
+		<Navbar />
+		<div class="flex flex-col items-center gap-1">
+			<h2
+				class="text-xl md:text-2xl lg:text-3xl border-b border-custom-purple text-center">
+				Bienvenido a mi portfolio
+			</h2>
+			<h3 class="text-2xl md:text-3xl lg:text-4xl text-center">
+				Soy Desarrollador Web y me llamo <span class="text-custom-purple"
+					>Pablo Andrada</span
+				>.
+			</h3>
+		</div>
+		<div class="flex justify-center mb-10">
+			<a href="#about" class="p-4 bg-custom-purple_darker rounded-full">
+				<img
+					src="/icons/down-arrow.svg"
+					class="size-6 animate-bounce motion-reduce:animate-none"
+					alt="Arrow"
+				/>
+			</a>
+		</div>
+	</header>
+	<main>
+		<section
+			id="about"
+			class="bg-custom-purple_darker flex flex-col md:flex-row gap-4 md:gap-12 p-4">
+			<article class="flex flex-col gap-2">
+				<h3 class="text-center text-lg md:text-xl text-white font-bold">
+					Habilidades Profesionales
+				</h3>
+				<div class="flex justify-center -mt-2">
+					<span class="text-center text-gray-300"
+						>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</span
+					>
+				</div>
+				<div class="flex justify-center gap-2 flex-wrap">
+					{SKILLS.map((skill) => <Skill skill={skill} />)}
+				</div>
+				<div class="flex flex-col gap-1 text-gray-300 p-2">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+						inventore modi quisquam quae error molestiae id totam dolor corrupti
+						ad? Maxime error eligendi repudiandae est beatae deserunt totam
+						possimus et!
+					</p><p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+						inventore modi quisquam quae error molestiae id totam dolor corrupti
+						ad? Maxime error eligendi repudiandae est beatae deserunt totam
+						possimus et!
+					</p><p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+						inventore modi quisquam quae error molestiae id totam dolor corrupti
+						ad? Maxime error eligendi repudiandae est beatae deserunt totam
+						possimus et!
+					</p>
+				</div>
+			</article>
+			<article>
+				<h3 class="text-center text-lg md:text-xl text-white font-bold mb-2">
+					Experiencia
+				</h3>
+				<JobTimeline />
+			</article>
+		</section>
+		<section
+			id="projects"
+			class="max-w-screen-lg mx-auto grid place-content-center gap-12">
+			<div class="flex justify-center mt-8">
+				<h3
+					class="w-fit border-b border-b-custom-purple text-xl md:text-2xl lg:text-4xl font-semibold">
+					Los proyectos de los que más orgulloso estoy
+				</h3>
+			</div>
+			<div class="w-full grid place-content-center gap-16">
+				{
+					PROJECTS.map((project, index) => (
+						<Project project={project} index={index} />
+					))
+				}
+			</div>
+		</section>
+		<section
+			id="contact"
+			class="mt-6 relative h-[610px] xs:h-[590px] sl:h-[540px] sm:h-[560px] lg:h-[610px]">
+			<div
+				class="rounded-lg bg-white shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md">
+				<h2
+					class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+					Pongámonos en contacto!
+				</h2>
+				<p
+					class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+					Si tienes alguna pregunta, deseas discutir un proyecto o simplemente
+					quieres decir hola, no dudes en llenar el formulario a continuación.
+				</p>
+				<form action="#" class="space-y-8">
+					<div>
+						<label
+							for="email"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Email</label
+						>
+						<input
+							type="email"
+							id="email"
+							class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+							placeholder="name@flowbite.com"
+							required
+						/>
+					</div>
+					<div>
+						<label
+							for="subject"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Asunto</label
+						>
+						<input
+							type="text"
+							id="subject"
+							class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+							placeholder="Déjame saber en que puedo ayudar"
+							required
+						/>
+					</div>
+					<div class="sm:col-span-2">
+						<label
+							for="message"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+							>Mensaje</label
+						>
+						<textarea
+							id="message"
+							rows="6"
+							class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							placeholder="Déjame un mensaje..."></textarea>
+					</div>
+					<button
+						type="submit"
+						class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						>Enviar mensaje</button
+					>
+				</form>
+			</div>
+		</section>
+	</main>
+	<Footer />
 </Layout>

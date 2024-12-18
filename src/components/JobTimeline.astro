@@ -1,0 +1,22 @@
+---
+import JobCard from "./JobCard.astro";
+
+const JOBS: Job[] = [
+    {
+        date: "2024-presente",
+        title: "Desarrollador Frontend en Facebook",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit recusandae voluptate aperiam voluptas quae facilis deleniti sit deserunt eius culpa in, enim natus architecto accusantium inventore, at reiciendis molestiae! Ipsum!",
+    },
+    {
+        date: "2023-2024",
+        title: "Practicante Desarrollador FullStack",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit recusandae voluptate aperiam voluptas quae facilis deleniti sit deserunt eius culpa in, enim natus architecto accusantium inventore, at reiciendis molestiae! Ipsum!",
+    },
+];
+---
+
+<ol class="relative border-s border-gray-200">
+    {JOBS.map((job) => <JobCard job={job} />)}
+</ol>
