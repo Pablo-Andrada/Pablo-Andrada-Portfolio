@@ -170,34 +170,34 @@ const PROJECTS: Project[] = [
 	<main>
 		<section
 			id="about"
-			class="bg-gray-800 flex flex-col md:flex-row gap-4 md:gap-12 p-4">
-			<article class="flex flex-col gap-2">
-				<h3 class="text-center text-lg md:text-xl text-white font-bold">
+			class="bg-gray-800 grid md:grid-cols-2 gap-8 p-6 md:p-12">
+			<!-- Professional Skills Section -->
+			<article class="flex flex-col justify-between gap-6">
+				<h3 class="text-center text-xl md:text-2xl text-white font-bold">
 					Professional Skills
 				</h3>
-				<div class="flex justify-center -mt-2">
-					<span class="text-center text-gray-300"></span>
-				</div>
 				<div class="flex justify-center gap-2 flex-wrap">
 					{SKILLS.map((skill) => <Skill skill={skill} />)}
 				</div>
-				<div class="flex flex-col gap-1 text-gray-300 p-2">
-					<p>
+				<div class="flex flex-col gap-4 text-gray-300 p-4">
+					<p class="text-base leading-relaxed">
 						Full Stack Developer passionate about creating innovative and
 						scalable solutions. With solid experience in modern technologies
 						such as JavaScript, TypeScript, TailwindCSS, React, Node.js,
 						Express, HTML, CSS, PostgreSQL, and version control with Git. My
 						focus is on building robust and efficient applications.
 					</p>
-					<p>
-						Throughout my projects, I have strengthened key skills such as
-						teamwork, effective communication, problem-solving, time management,
-						and continuous learning. I have experience with agile methodologies
-						(Scrum, Kanban) and adapt quickly to new environments, always aiming
-						for an excellent user experience and a positive work environment.
+					<p class="text-base leading-relaxed">
+						I've developed key skills like teamwork, communication,
+						problem-solving, and time management. I have experience with agile
+						methodologies (Scrum, Kanban) and quickly adapt to new environments,
+						always focusing on delivering a great user experience and fostering
+						a positive work culture.
 					</p>
+				</div>
+				<div>
 					<p class="text-xl font-semibold text-white mt-6">Education:</p>
-					<ul class="list-inside pl-5 space-y-3 text-gray-300">
+					<ul class="list-inside pl-5 space-y-4 text-gray-300">
 						<li class="flex items-start">
 							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
 							<div>
@@ -223,13 +223,16 @@ const PROJECTS: Project[] = [
 					</ul>
 				</div>
 			</article>
-			<article>
-				<h3 class="text-center text-lg md:text-xl text-white font-bold mb-2">
+
+			<!-- Experience Section -->
+			<article class="flex flex-col justify-between gap-6">
+				<h3 class="text-center text-lg md:text-xl text-white font-bold">
 					Experience
 				</h3>
 				<JobTimeline />
 			</article>
 		</section>
+
 		<section
 			id="projects"
 			class="max-w-screen-lg mx-auto grid place-content-center gap-12">

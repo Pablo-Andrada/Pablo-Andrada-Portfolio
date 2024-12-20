@@ -2,21 +2,27 @@
 import JobCard from "./JobCard.astro";
 
 const JOBS: Job[] = [
-    {
-        date: "2024-presente",
-        title: "Desarrollador Frontend en Facebook",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit recusandae voluptate aperiam voluptas quae facilis deleniti sit deserunt eius culpa in, enim natus architecto accusantium inventore, at reiciendis molestiae! Ipsum!",
-    },
-    {
-        date: "2023-2024",
-        title: "Practicante Desarrollador FullStack",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit recusandae voluptate aperiam voluptas quae facilis deleniti sit deserunt eius culpa in, enim natus architecto accusantium inventore, at reiciendis molestiae! Ipsum!",
-    },
+	{
+		date: "2024-present",
+		title: "Fullstack Freelancer Developer",
+		description:
+			"As a freelancer, I developed a scheduling application for an auto repair shop, designed to accommodate different user roles. The app streamlines daily operations by helping owners efficiently manage appointments, monitor parts and inventory, track expenses, and calculate the final balance with clients, improving both organization and productivity. ",
+	},
+	{
+		date: "2023-2024",
+		title: "Full Stack Web Developer - The Next Page (Ecommerce App)",
+		description:
+			"-Full Stack Web Developer - The Next Page (Ecommerce App) Developed an ecommerce app for book sales, from database creation to frontend implementation with Redux, including features like filters, shopping cart, integration with Mercado Pago and Stripe, and email sending with Nodemailer.",
+	},
+	{
+		date: "2023-2024",
+		title: "Full Stack Web Developer - Countries Project",
+		description:
+			"Designed and developed an interactive web application to explore and filter countries based on various criteria, such as continent, name, or population. The app dynamically renders country flags and provides detailed information about each country. It also features a clean user interface with responsive design, ensuring a seamless experience across devices.",
+	},
 ];
 ---
 
 <ol class="relative border-s border-gray-200">
-    {JOBS.map((job) => <JobCard job={job} />)}
+	{JOBS.map((job) => <JobCard job={job} />)}
 </ol>
