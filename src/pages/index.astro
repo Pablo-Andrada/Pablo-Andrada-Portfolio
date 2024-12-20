@@ -32,8 +32,20 @@ const SKILLS: Skill[] = [
 		iconUrl: "/icons/css.svg",
 	},
 	{
+		name: "NodeJS",
+		iconUrl: "/icons/nodejs2.png",
+	},
+	{
+		name: "Express",
+		iconUrl: "/icons/expressjs.png",
+	},
+	{
 		name: "PostgreSQL",
 		iconUrl: "/icons/postgresql.png",
+	},
+	{
+		name: "MongoDB",
+		iconUrl: "/icons/MongoDB.png",
 	},
 	{
 		name: "Git",
@@ -164,30 +176,51 @@ const PROJECTS: Project[] = [
 					Professional Skills
 				</h3>
 				<div class="flex justify-center -mt-2">
-					<span class="text-center text-gray-300"
-						>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</span
-					>
+					<span class="text-center text-gray-300"></span>
 				</div>
 				<div class="flex justify-center gap-2 flex-wrap">
 					{SKILLS.map((skill) => <Skill skill={skill} />)}
 				</div>
 				<div class="flex flex-col gap-1 text-gray-300 p-2">
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-						inventore modi quisquam quae error molestiae id totam dolor corrupti
-						ad? Maxime error eligendi repudiandae est beatae deserunt totam
-						possimus et!
-					</p><p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-						inventore modi quisquam quae error molestiae id totam dolor corrupti
-						ad? Maxime error eligendi repudiandae est beatae deserunt totam
-						possimus et!
-					</p><p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-						inventore modi quisquam quae error molestiae id totam dolor corrupti
-						ad? Maxime error eligendi repudiandae est beatae deserunt totam
-						possimus et!
+						Full Stack Developer passionate about creating innovative and
+						scalable solutions. With solid experience in modern technologies
+						such as JavaScript, TypeScript, TailwindCSS, React, Node.js,
+						Express, HTML, CSS, PostgreSQL, and version control with Git. My
+						focus is on building robust and efficient applications.
 					</p>
+					<p>
+						Throughout my projects, I have strengthened key skills such as
+						teamwork, effective communication, problem-solving, time management,
+						and continuous learning. I have experience with agile methodologies
+						(Scrum, Kanban) and adapt quickly to new environments, always aiming
+						for an excellent user experience and a positive work environment.
+					</p>
+					<p class="text-xl font-semibold text-white mt-6">Education:</p>
+					<ul class="list-inside pl-5 space-y-3 text-gray-300">
+						<li class="flex items-start">
+							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
+							<div>
+								<p class="text-lg font-semibold">
+									Facultad de Matemáticas, Astronomía, Física, y Computación
+									(FAMAF).
+								</p>
+								<p class="text-sm">2024 - Present.</p>
+								<p class="text-sm">Bachelor's Degree in Computer Science.</p>
+								<p class="text-sm">
+									National University of Córdoba, Argentina.
+								</p>
+							</div>
+						</li>
+						<li class="flex items-start">
+							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
+							<div>
+								<p class="text-lg font-semibold">HENRY academy.</p>
+								<p class="text-sm">2023.</p>
+								<p class="text-sm">Full Stack Developer.</p>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</article>
 			<article>
@@ -203,7 +236,7 @@ const PROJECTS: Project[] = [
 			<div class="flex justify-center mt-8">
 				<h3
 					class="w-fit border-b border-b-custom-purple text-xl md:text-2xl lg:text-4xl font-semibold">
-					Algunos de mis proyectos:
+					Some of my projects:
 				</h3>
 			</div>
 			<div class="w-full grid place-content-center gap-16">
@@ -221,19 +254,19 @@ const PROJECTS: Project[] = [
 				class="rounded-lg bg-white shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md">
 				<h2
 					class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-					Pongámonos en contacto!
+					Let's get in touch!
 				</h2>
 				<p
 					class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-					Si tienes alguna pregunta, deseas discutir un proyecto o simplemente
-					quieres decir hola, no dudes en llenar el formulario a continuación.
+					If you have any questions, want to chat about a project, or just stop
+					by to say hello, feel free to fill out the form below!
 				</p>
 				<form action="#" class="space-y-8">
 					<div>
 						<label
 							for="email"
 							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>Email</label
+							>E-mail</label
 						>
 						<input
 							type="email"
@@ -247,7 +280,7 @@ const PROJECTS: Project[] = [
 						<label
 							for="subject"
 							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>Asunto</label
+							>Subject line</label
 						>
 						<input
 							type="text"
@@ -261,7 +294,7 @@ const PROJECTS: Project[] = [
 						<label
 							for="message"
 							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-							>Mensaje</label
+							>Message</label
 						>
 						<textarea
 							id="message"
