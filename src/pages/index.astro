@@ -1,4 +1,5 @@
 ---
+// Importaciones
 import Footer from "../components/Footer.astro";
 import JobTimeline from "../components/JobTimeline.astro";
 import Navbar from "../components/NavBar.astro";
@@ -6,7 +7,8 @@ import Project from "../components/Project.astro";
 import Skill from "../components/Skill.astro";
 import Layout from "../layouts/Layout.astro";
 
-const SKILLS: Skill[] = [
+// Datos de habilidades
+const SKILLS: Array<{ name: string; iconUrl: string }> = [
 	{
 		name: "JavaScript",
 		iconUrl: "/icons/javascript.png",
@@ -53,7 +55,14 @@ const SKILLS: Skill[] = [
 	},
 ];
 
-const PROJECTS: Project[] = [
+// Datos de proyectos
+const PROJECTS: Array<{
+	title: string;
+	urlImg: string;
+	description: string;
+	link: string;
+	usedSkills: Array<{ name: string; iconUrl: string }>;
+}> = [
 	{
 		title: "Mechanic Workshop Booking System",
 		urlImg: "/Turnos -Taller Mecánica.png",
@@ -188,24 +197,179 @@ const PROJECTS: Project[] = [
 ];
 ---
 
+<!-- Estilos globales para las animaciones -->
+<style is:global>
+	/* Animación de entrada para el contenido principal */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Animación de flotación para los iconos de habilidades */
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	/* Animación para el fondo del header */
+	@keyframes pan {
+		0% {
+			background-position: 0% 0%;
+		}
+		100% {
+			background-position: 100% 100%;
+		}
+	}
+
+	/* Efecto de cursor personalizado */
+	* {
+		cursor:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>')
+				12 12,
+			auto;
+	}
+
+	a,
+	button {
+		cursor:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%23a78bfa" stroke="%23a78bfa" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/></svg>')
+				12 12,
+			pointer;
+	}
+
+	/* Efecto de onda para el fondo */
+	.wave-bg {
+		background:
+			radial-gradient(
+				circle,
+				transparent 20%,
+				#1f2937 20%,
+				#1f2937 80%,
+				transparent 80%,
+				transparent
+			),
+			radial-gradient(
+					circle,
+					transparent 20%,
+					#1f2937 20%,
+					#1f2937 80%,
+					transparent 80%,
+					transparent
+				)
+				50px 50px;
+		background-size: 100px 100px;
+		background-position:
+			0 0,
+			50px 50px;
+		animation: waveMove 20s linear infinite;
+	}
+
+	@keyframes waveMove {
+		0% {
+			background-position:
+				0 0,
+				50px 50px;
+		}
+		100% {
+			background-position:
+				100px 0,
+				150px 50px;
+		}
+	}
+
+	/* Clases de utilidad para animaciones */
+	.animate-fadeInUp {
+		animation: fadeInUp 0.8s ease-out forwards;
+	}
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+	.delay-100 {
+		animation-delay: 0.1s;
+	}
+	.delay-200 {
+		animation-delay: 0.2s;
+	}
+	.delay-300 {
+		animation-delay: 0.3s;
+	}
+	.delay-400 {
+		animation-delay: 0.4s;
+	}
+
+	/* Efecto de partículas (simulado con CSS) */
+	.particles::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: radial-gradient(white 1px, transparent 1px),
+			radial-gradient(#a78bfa 1px, transparent 1px);
+		background-size: 40px 40px;
+		background-position:
+			0 0,
+			20px 20px;
+		opacity: 0.1;
+		z-index: -1;
+		animation: particleMove 20s linear infinite;
+	}
+
+	@keyframes particleMove {
+		100% {
+			background-position:
+				100px 100px,
+				120px 120px;
+		}
+	}
+</style>
+
 <Layout title="Pablo Andrada | FullStack Web Developer">
+	<!-- Header con animaciones de fondo y contenido -->
 	<header
 		id="inicio"
-		class="h-dvh bg-[url('/fondo6.webp')] bg-cover bg-center flex flex-col justify-between">
-		<Navbar />
-		<div class="flex flex-col items-center gap-1">
+		class="h-dvh bg-[url('/fondo6.webp')] bg-cover bg-center flex flex-col justify-between relative overflow-hidden">
+		<!-- Fondo animado -->
+		<div
+			class="absolute inset-0 z-0 bg-[url('/background.svg')] bg-[length:120%] animate-pan">
+		</div>
+		<div
+			class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/80 to-gray-900 z-0">
+		</div>
+
+		<!-- Contenido con animaciones de entrada -->
+		<div class="relative z-10">
+			<Navbar />
+		</div>
+		<div class="flex flex-col items-center gap-1 relative z-10">
 			<h2
-				class="text-xl md:text-2xl lg:text-3xl border-b border-custom-purple text-center">
+				class="text-xl md:text-2xl lg:text-3xl border-b border-custom-purple text-center animate-fadeInUp">
 				Welcome to my portfolio
 			</h2>
-			<h3 class="text-2xl md:text-3xl lg:text-4xl text-center">
-				I am a Web Developer and my name is <span class="text-indigo-500"
-					>Pablo Andrada</span
+			<h3
+				class="text-2xl md:text-3xl lg:text-4xl text-center animate-fadeInUp delay-100">
+				I am a Web Developer and my name is <span
+					class="text-indigo-500 animate-pulse">Pablo Andrada</span
 				>.
 			</h3>
 		</div>
-		<div class="flex justify-center mb-10">
-			<a href="#about" class="p-4 bg-custom-purple_darker rounded-full">
+		<div
+			class="flex justify-center mb-10 relative z-10 animate-fadeInUp delay-300">
+			<a
+				href="#about"
+				class="p-4 bg-custom-purple_darker rounded-full hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-indigo-500/50">
 				<img
 					src="/icons/down-arrow.svg"
 					class="size-6 animate-bounce motion-reduce:animate-none"
@@ -214,27 +378,38 @@ const PROJECTS: Project[] = [
 			</a>
 		</div>
 	</header>
+
 	<main>
+		<!-- Sección de fondo animado con ondas -->
 		<section
 			id="about"
-			class="bg-gray-800 grid md:grid-cols-2 gap-8 p-6 md:p-12">
-			<!-- Professional Skills Section -->
+			class="bg-gray-800 grid md:grid-cols-2 gap-8 p-6 md:p-12 wave-bg">
+			<!-- Habilidades Profesionales -->
 			<article class="flex flex-col justify-between gap-6">
-				<h3 class="text-center text-xl md:text-2xl text-white font-bold">
+				<h3
+					class="text-center text-xl md:text-2xl text-white font-bold animate-fadeInUp">
 					Professional Skills
 				</h3>
-				<div class="flex justify-center gap-2 flex-wrap">
-					{SKILLS.map((skill) => <Skill skill={skill} />)}
+				<div class="flex justify-center gap-4 flex-wrap">
+					{
+						SKILLS.map((skill, index) => (
+							<div
+								class="animate-float hover:scale-110 transition-transform"
+								style={`animation-delay: ${index * 0.1}s`}>
+								<Skill skill={skill} />
+							</div>
+						))
+					}
 				</div>
 				<div class="flex flex-col gap-4 text-gray-300 p-4">
-					<p class="text-base leading-relaxed">
+					<p class="text-base leading-relaxed animate-fadeInUp">
 						Full Stack Developer passionate about creating innovative and
 						scalable solutions. With solid experience in modern technologies
 						such as JavaScript, TypeScript, TailwindCSS, React, Node.js,
 						Express, HTML, CSS, PostgreSQL, and version control with Git. My
 						focus is on building robust and efficient applications.
 					</p>
-					<p class="text-base leading-relaxed">
+					<p class="text-base leading-relaxed animate-fadeInUp delay-100">
 						I've developed key skills like teamwork, communication,
 						problem-solving, and time management. I have experience with agile
 						methodologies (Scrum, Kanban) and quickly adapt to new environments,
@@ -242,11 +417,14 @@ const PROJECTS: Project[] = [
 						a positive work culture.
 					</p>
 				</div>
-				<div>
+				<div class="animate-fadeInUp delay-200">
 					<p class="text-xl font-semibold text-white mt-6">Education:</p>
 					<ul class="list-inside pl-5 space-y-4 text-gray-300">
 						<li class="flex items-start">
-							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
+							<span
+								class="mr-3 text-lg font-bold text-custom-purple animate-pulse"
+								>•</span
+							>
 							<div>
 								<p class="text-lg font-semibold">
 									Facultad de Matemáticas, Astronomía, Física, y Computación
@@ -260,7 +438,10 @@ const PROJECTS: Project[] = [
 							</div>
 						</li>
 						<li class="flex items-start">
-							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
+							<span
+								class="mr-3 text-lg font-bold text-custom-purple animate-pulse"
+								>•</span
+							>
 							<div>
 								<p class="text-lg font-semibold">HENRY academy.</p>
 								<p class="text-sm">2023.</p>
@@ -271,21 +452,23 @@ const PROJECTS: Project[] = [
 				</div>
 			</article>
 
-			<!-- Experience Section -->
-			<article class="flex flex-col justify-between gap-6">
-				<h3 class="text-center text-lg md:text-xl text-white font-bold">
+			<!-- Experiencia con fondo de partículas -->
+			<article class="flex flex-col justify-between gap-6 particles relative">
+				<h3
+					class="text-center text-lg md:text-xl text-white font-bold animate-fadeInUp">
 					Experience
 				</h3>
 				<JobTimeline />
 			</article>
 		</section>
 
+		<!-- Sección de proyectos con efecto de paralaje -->
 		<section
 			id="projects"
-			class="max-w-screen-lg mx-auto grid place-content-center gap-12">
-			<div class="flex justify-center mt-8">
+			class="max-w-screen-lg mx-auto grid place-content-center gap-12 py-12 bg-gradient-to-b from-gray-800 to-gray-900">
+			<div class="flex justify-center">
 				<h3
-					class="w-fit border-b border-b-custom-purple text-xl md:text-2xl lg:text-4xl font-semibold">
+					class="w-fit border-b border-b-custom-purple text-xl md:text-2xl lg:text-4xl font-semibold animate-fadeInUp">
 					Some of my projects:
 				</h3>
 			</div>
@@ -297,11 +480,13 @@ const PROJECTS: Project[] = [
 				}
 			</div>
 		</section>
+
+		<!-- Formulario de contacto con efectos de entrada -->
 		<section
 			id="contact"
-			class="mt-6 relative h-[610px] xs:h-[590px] sl:h-[540px] sm:h-[560px] lg:h-[610px]">
+			class="mt-6 relative h-[610px] xs:h-[590px] sl:h-[540px] sm:h-[560px] lg:h-[610px] animate-fadeInUp">
 			<div
-				class="rounded-lg bg-white shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md">
+				class="rounded-lg bg-white shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md transform transition-all hover:scale-[1.02] duration-500">
 				<h2
 					class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
 					Let's get in touch!
@@ -312,51 +497,51 @@ const PROJECTS: Project[] = [
 					by to say hello, feel free to fill out the form below!
 				</p>
 				<form action="#" class="space-y-8">
-					<div>
-						<label
-							for="email"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>E-mail</label
-						>
+					<div class="relative">
 						<input
 							type="email"
 							id="email"
-							class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-							placeholder="name@flowbite.com"
+							class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 peer"
+							placeholder=" "
 							required
 						/>
-					</div>
-					<div>
 						<label
-							for="subject"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>Subject line</label
+							for="email"
+							class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+							>E-mail</label
 						>
+					</div>
+					<div class="relative">
 						<input
 							type="text"
 							id="subject"
-							class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-							placeholder="Déjame saber en que puedo ayudar"
+							class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 peer"
+							placeholder=" "
 							required
 						/>
-					</div>
-					<div class="sm:col-span-2">
 						<label
-							for="message"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-							>Message</label
+							for="subject"
+							class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+							>Subject line</label
 						>
+					</div>
+					<div class="relative">
 						<textarea
 							id="message"
 							rows="6"
-							class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							placeholder="Déjame un mensaje..."></textarea>
+							class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 peer"
+							placeholder=" "></textarea>
+						<label
+							for="message"
+							class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+							>Message</label
+						>
 					</div>
 					<button
 						type="submit"
-						class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-						>Send message</button
-					>
+						class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 transform transition-transform hover:scale-105 duration-300 shadow-lg hover:shadow-blue-500/30">
+						Send message
+					</button>
 				</form>
 			</div>
 		</section>
