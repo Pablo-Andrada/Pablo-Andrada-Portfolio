@@ -398,7 +398,8 @@ const EXPERIENCE = [
 		<script>
 			// Script para crear partículas dinámicas
 			document.addEventListener("DOMContentLoaded", () => {
-				const particlesBg = document.getElementById("particles-bg");
+				// Aserción non-null (!) para que TS no lo marque como posible null
+				const particlesBg = document.getElementById("particles-bg")!;
 				const particleCount = 30;
 
 				for (let i = 0; i < particleCount; i++) {
@@ -433,7 +434,8 @@ const EXPERIENCE = [
 		<div class="container text-center">
 			<div class="max-w-3xl mx-auto">
 				<h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fadeIn">
-					Hola, soy <span
+					Hola, soy
+					<span
 						class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600"
 						>Pablo Andrada</span
 					>
@@ -666,9 +668,9 @@ const EXPERIENCE = [
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 				anchor.addEventListener("click", function (e) {
 					e.preventDefault();
-					const targetId = this.getAttribute("href");
+					// Aserción non-null (!) para que TS no marque getAttribute como posible null
+					const targetId = this.getAttribute("href")!;
 					const targetElement = document.querySelector(targetId);
-
 					if (targetElement) {
 						window.scrollTo({
 							top: targetElement.offsetTop - 80,
