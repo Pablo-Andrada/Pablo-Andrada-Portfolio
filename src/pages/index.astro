@@ -666,11 +666,18 @@ const EXPERIENCE = [
 
 			// Scroll suave para enlaces internos
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-				anchor.addEventListener("click", function (e) {
+				anchor.addEventListener("click", (e) => {
 					e.preventDefault();
-					// Aserción non-null (!) para que TS no marque getAttribute como posible null
-					const targetId = this.getAttribute("href")!;
-					const targetElement = document.querySelector(targetId);
+
+					// 1) Castear e.currentTarget a HTMLAnchorElement
+					const element = e.currentTarget as HTMLAnchorElement;
+					const targetId = element.getAttribute("href")!;
+
+					// 2) Castear la query a HTMLElement para poder usar offsetTop
+					const targetElement = document.querySelector(
+						targetId
+					) as HTMLElement | null;
+
 					if (targetElement) {
 						window.scrollTo({
 							top: targetElement.offsetTop - 80,
