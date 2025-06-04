@@ -1,365 +1,682 @@
 ---
+// src/pages/index.astro
 import Footer from "../components/Footer.astro";
-import JobTimeline from "../components/JobTimeline.astro";
 import Navbar from "../components/NavBar.astro";
-import Project from "../components/Project.astro";
-import Skill from "../components/Skill.astro";
 import Layout from "../layouts/Layout.astro";
 
-const SKILLS: Skill[] = [
-	{
-		name: "JavaScript",
-		iconUrl: "/icons/javascript.png",
-	},
-	{
-		name: "TypeScript",
-		iconUrl: "/icons/typescript.png",
-	},
-	{
-		name: "TailwindCSS",
-		iconUrl: "/icons/tailwindcss.png",
-	},
-	{
-		name: "React",
-		iconUrl: "/icons/react.png",
-	},
-	{
-		name: "HTML5",
-		iconUrl: "/icons/html.svg",
-	},
-	{
-		name: "CSS3",
-		iconUrl: "/icons/css.svg",
-	},
-	{
-		name: "NodeJS",
-		iconUrl: "/icons/nodejs2.png",
-	},
-	{
-		name: "Express",
-		iconUrl: "/icons/expressjs.png",
-	},
-	{
-		name: "PostgreSQL",
-		iconUrl: "/icons/postgresql.png",
-	},
-	{
-		name: "MongoDB",
-		iconUrl: "/icons/MongoDB.png",
-	},
-	{
-		name: "Git",
-		iconUrl: "/icons/git.png",
-	},
-];
-
-const PROJECTS: Project[] = [
+// Datos de proyectos
+const PROJECTS = [
 	{
 		title: "Mechanic Workshop Booking System",
 		urlImg: "/Turnos -Taller Mecánica.png",
 		description:
-			"This app is a mechanic (in this case) workshop scheduler where registered/logged-in users can manage appointments. Users can create, cancel, or delete bookings with automated email confirmations for all actions. The dashboard displays key sections: Appointment Calendar, Your Next Appointment, Appointment History, and Today's Bookings. Additional pages include: About (company info), My Appointments (booking management), and Contact (direct messaging to the workshop).",
+			"Sistema de gestión de citas para talleres mecánicos con roles de usuario y confirmaciones automáticas por email.",
 		link: "https://shift-application-1iwg.vercel.app",
-		usedSkills: [
-			{
-				name: "JavaScript",
-				iconUrl: "/icons/javascript.png",
-			},
-			{
-				name: "TypeScript",
-				iconUrl: "/icons/typescript.png",
-			},
-			{
-				name: "React",
-				iconUrl: "/icons/react.png",
-			},
-			{
-				name: "NodeJS",
-				iconUrl: "/icons/nodejs2.png",
-			},
-			{
-				name: "Express",
-				iconUrl: "/icons/expressjs.png",
-			},
-			{
-				name: "PostgreSQL",
-				iconUrl: "/icons/postgresql.png",
-			},
-			{
-				name: "Git",
-				iconUrl: "/icons/git.png",
-			},
-		],
+		technologies: ["React", "Node.js", "PostgreSQL", "TypeScript"],
 	},
 	{
 		title: "Rick and Morty APP",
 		urlImg: "/image.png",
 		description:
-			"The app allows users to explore character cards from Rick and Morty by connecting directly to its official API. Additionally, it features a detailed view of each character when clicking on their card. It also includes a landing page with a controlled form that users must complete to access the main content.",
+			"Exploración de personajes mediante API con vista detallada y formulario de acceso.",
 		link: "https://rick-and-morty-project-zeta-one.vercel.app",
-		usedSkills: [
-			{
-				name: "JavaScript",
-				iconUrl: "/icons/javascript.png",
-			},
-
-			{
-				name: "React",
-				iconUrl: "/icons/react.png",
-			},
-			{
-				name: "Git",
-				iconUrl: "/icons/git.png",
-			},
-		],
+		technologies: ["React", "API Integration", "JavaScript"],
 	},
 	{
 		title: "Movie Search App",
 		urlImg: "/project2(2).jpg",
 		description:
-			"This application allows users to search for movies by entering titles, connecting to an API to fetch results. Each movie includes relevant details such as a synopsis and release year. The interface is intuitive, with an attractive design, making it ideal for easily finding information about your favorite movies.",
+			"Buscador de películas con detalles de sinopsis y año de lanzamiento.",
 		link: "https://movie-search-app-ffeh.vercel.app",
-		usedSkills: [
-			{
-				name: "JavaScript",
-				iconUrl: "/icons/javascript.png",
-			},
+		technologies: ["React", "API Integration", "CSS3"],
+	},
+];
 
-			{
-				name: "React",
-				iconUrl: "/icons/react.png",
-			},
-			{
-				name: "Git",
-				iconUrl: "/icons/git.png",
-			},
-		],
+// Datos de experiencia
+const EXPERIENCE = [
+	{
+		period: "2023 - Presente",
+		position: "Desarrollador Full Stack Freelance",
+		description:
+			"Desarrollo de aplicaciones web personalizadas para diversos clientes, implementando soluciones escalables y mantenibles.",
 	},
 	{
-		title: "Loan Calculator",
-		urlImg: "/project3(1).jpg",
+		period: "2022 - 2023",
+		position: "Desarrollador Frontend en The Next Page",
 		description:
-			"The application calculates loan installments by entering the total amount, interest rate, and desired term. It provides clear and detailed results, showing how payments vary based on the parameters. With a clean design, it ensures ease of use for users of all levels.",
-		link: "https://loan-calculator-app-c5dd.vercel.app",
-		usedSkills: [
-			{
-				name: "JavaScript",
-				iconUrl: "/icons/javascript.png",
-			},
-			{
-				name: "CSS3",
-				iconUrl: "/icons/css.svg",
-			},
-			{
-				name: "React",
-				iconUrl: "/icons/react.png",
-			},
-			{
-				name: "Git",
-				iconUrl: "/icons/git.png",
-			},
-		],
-	},
-	{
-		title: "Subscription Platform Tracker",
-		urlImg: "/project4(1).jpg",
-		description:
-			"This app helps manage and organize all your digital subscriptions. It allows you to add services, costs, and payment dates, providing a detailed summary to track your expenses. It's perfect for avoiding missed payments and managing your finances with greater clarity.",
-		link: "https://subscription-platform-tracker-5666.vercel.app",
-		usedSkills: [
-			{
-				name: "JavaScript",
-				iconUrl: "/icons/javascript.png",
-			},
-			{
-				name: "CSS3",
-				iconUrl: "/icons/css.svg",
-			},
-			{
-				name: "React",
-				iconUrl: "/icons/react.png",
-			},
-			{
-				name: "Git",
-				iconUrl: "/icons/git.png",
-			},
-		],
+			"Implementación de e-commerce para venta de libros con integración de Mercado Pago y envío de emails con Nodemailer.",
 	},
 ];
 ---
 
+<style is:global>
+	/* Variables globales */
+	:root {
+		--primary: #6366f1;
+		--primary-dark: #4f46e5;
+		--dark: #1e293b;
+		--light: #f8fafc;
+		--gray: #94a3b8;
+		--transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+	}
+
+	/* Reset y estilos base */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: "Inter", sans-serif;
+		background-color: #0f172a;
+		color: var(--light);
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
+
+	/* Animaciones clave */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
+
+	@keyframes blinkCaret {
+		from,
+		to {
+			border-color: transparent;
+		}
+		50% {
+			border-color: var(--primary);
+		}
+	}
+
+	/* Utilidades */
+	.animate-fadeIn {
+		animation: fadeIn 0.8s ease-out forwards;
+		opacity: 0;
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.delay-100 {
+		animation-delay: 0.1s;
+	}
+	.delay-200 {
+		animation-delay: 0.2s;
+	}
+	.delay-300 {
+		animation-delay: 0.3s;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.section {
+		padding: 8rem 0;
+	}
+
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 3rem;
+		position: relative;
+		display: inline-block;
+	}
+
+	.section-title::after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 50%;
+		height: 4px;
+		background: var(--primary);
+		border-radius: 2px;
+	}
+
+	/* Fondo con efecto de partículas */
+	.particles-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+		overflow: hidden;
+	}
+
+	.particle {
+		position: absolute;
+		border-radius: 50%;
+		background: rgba(99, 102, 241, 0.2);
+		animation: float 15s infinite linear;
+	}
+
+	/* Botones */
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 2rem;
+		background: var(--primary);
+		color: white;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: var(--transition);
+		border: 2px solid var(--primary);
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+	}
+
+	.btn::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0%;
+		height: 100%;
+		background: var(--dark);
+		transition: var(--transition);
+		z-index: -1;
+	}
+
+	.btn:hover::before {
+		width: 100%;
+	}
+
+	.btn:hover {
+		color: var(--primary);
+		border-color: var(--primary);
+	}
+
+	/* Tarjetas de proyectos */
+	.project-card {
+		border-radius: 16px;
+		overflow: hidden;
+		background: rgba(15, 23, 42, 0.6);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		transition: var(--transition);
+		position: relative;
+		height: 100%;
+	}
+
+	.project-card:hover {
+		transform: translateY(-10px);
+		border-color: var(--primary);
+		box-shadow: 0 20px 30px rgba(99, 102, 241, 0.2);
+	}
+
+	.project-image {
+		height: 250px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.project-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: var(--transition);
+	}
+
+	.project-card:hover .project-image img {
+		transform: scale(1.1);
+	}
+
+	.project-content {
+		padding: 1.5rem;
+	}
+
+	.project-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	.project-description {
+		color: var(--gray);
+		margin-bottom: 1.5rem;
+	}
+
+	.project-technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.tech-badge {
+		background: rgba(99, 102, 241, 0.1);
+		color: var(--primary);
+		padding: 0.3rem 0.8rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
+		border: 1px solid var(--primary);
+	}
+
+	/* Timeline de experiencia */
+	.timeline {
+		position: relative;
+		padding-left: 30px;
+	}
+
+	.timeline::before {
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 5px;
+		height: 95%;
+		width: 2px;
+		background: var(--primary);
+	}
+
+	.timeline-item {
+		position: relative;
+		margin-bottom: 2.5rem;
+	}
+
+	.timeline-item::before {
+		content: "";
+		position: absolute;
+		left: -30px;
+		top: 5px;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background: var(--primary);
+		border: 3px solid var(--dark);
+	}
+
+	.timeline-period {
+		font-weight: 600;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-position {
+		font-size: 1.25rem;
+		font-weight: 700;
+		margin-bottom: 0.75rem;
+	}
+
+	/* Formulario de contacto */
+	.contact-form .form-group {
+		margin-bottom: 1.5rem;
+		position: relative;
+	}
+
+	.contact-form input,
+	.contact-form textarea {
+		width: 100%;
+		padding: 1rem;
+		background: rgba(15, 23, 42, 0.5);
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		border-radius: 8px;
+		color: var(--light);
+		font-size: 1rem;
+		transition: var(--transition);
+	}
+
+	.contact-form input:focus,
+	.contact-form textarea:focus {
+		outline: none;
+		border-color: var(--primary);
+		box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+	}
+
+	.contact-form label {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		color: var(--gray);
+		pointer-events: none;
+		transition: var(--transition);
+	}
+
+	.contact-form input:focus + label,
+	.contact-form input:not(:placeholder-shown) + label,
+	.contact-form textarea:focus + label,
+	.contact-form textarea:not(:placeholder-shown) + label {
+		top: -0.8rem;
+		left: 0.5rem;
+		font-size: 0.8rem;
+		background: var(--dark);
+		padding: 0 0.5rem;
+		color: var(--primary);
+	}
+</style>
+
 <Layout title="Pablo Andrada | FullStack Web Developer">
-	<header
-		id="inicio"
-		class="h-dvh bg-[url('/fondo6.webp')] bg-cover bg-center flex flex-col justify-between">
-		<Navbar />
-		<div class="flex flex-col items-center gap-1">
-			<h2
-				class="text-xl md:text-2xl lg:text-3xl border-b border-custom-purple text-center">
-				Welcome to my portfolio
-			</h2>
-			<h3 class="text-2xl md:text-3xl lg:text-4xl text-center">
-				I am a Web Developer and my name is <span class="text-indigo-500"
-					>Pablo Andrada</span
-				>.
-			</h3>
-		</div>
-		<div class="flex justify-center mb-10">
-			<a href="#about" class="p-4 bg-custom-purple_darker rounded-full">
-				<img
-					src="/icons/down-arrow.svg"
-					class="size-6 animate-bounce motion-reduce:animate-none"
-					alt="Arrow"
-				/>
-			</a>
-		</div>
-	</header>
-	<main>
-		<section
-			id="about"
-			class="bg-gray-800 grid md:grid-cols-2 gap-8 p-6 md:p-12">
-			<!-- Professional Skills Section -->
-			<article class="flex flex-col justify-between gap-6">
-				<h3 class="text-center text-xl md:text-2xl text-white font-bold">
-					Professional Skills
-				</h3>
-				<div class="flex justify-center gap-2 flex-wrap">
-					{SKILLS.map((skill) => <Skill skill={skill} />)}
-				</div>
-				<div class="flex flex-col gap-4 text-gray-300 p-4">
-					<p class="text-base leading-relaxed">
-						Full Stack Developer passionate about creating innovative and
-						scalable solutions. With solid experience in modern technologies
-						such as JavaScript, TypeScript, TailwindCSS, React, Node.js,
-						Express, HTML, CSS, PostgreSQL, and version control with Git. My
-						focus is on building robust and efficient applications.
-					</p>
-					<p class="text-base leading-relaxed">
-						I've developed key skills like teamwork, communication,
-						problem-solving, and time management. I have experience with agile
-						methodologies (Scrum, Kanban) and quickly adapt to new environments,
-						always focusing on delivering a great user experience and fostering
-						a positive work culture.
-					</p>
-				</div>
-				<div>
-					<p class="text-xl font-semibold text-white mt-6">Education:</p>
-					<ul class="list-inside pl-5 space-y-4 text-gray-300">
-						<li class="flex items-start">
-							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
-							<div>
-								<p class="text-lg font-semibold">
-									Facultad de Matemáticas, Astronomía, Física, y Computación
-									(FAMAF).
-								</p>
-								<p class="text-sm">2024 - Present.</p>
-								<p class="text-sm">Bachelor's Degree in Computer Science.</p>
-								<p class="text-sm">
-									National University of Córdoba, Argentina.
-								</p>
-							</div>
-						</li>
-						<li class="flex items-start">
-							<span class="mr-3 text-lg font-bold text-custom-purple">•</span>
-							<div>
-								<p class="text-lg font-semibold">HENRY academy.</p>
-								<p class="text-sm">2023.</p>
-								<p class="text-sm">Full Stack Developer.</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</article>
+	<!-- Fondo de partículas -->
+	<div class="particles-bg" id="particles-bg">
+		<script>
+			// Script para crear partículas dinámicas
+			document.addEventListener("DOMContentLoaded", () => {
+				const particlesBg = document.getElementById("particles-bg");
+				const particleCount = 30;
 
-			<!-- Experience Section -->
-			<article class="flex flex-col justify-between gap-6">
-				<h3 class="text-center text-lg md:text-xl text-white font-bold">
-					Experience
-				</h3>
-				<JobTimeline />
-			</article>
-		</section>
+				for (let i = 0; i < particleCount; i++) {
+					const particle = document.createElement("div");
+					particle.classList.add("particle");
 
-		<section
-			id="projects"
-			class="max-w-screen-lg mx-auto grid place-content-center gap-12">
-			<div class="flex justify-center mt-8">
-				<h3
-					class="w-fit border-b border-b-custom-purple text-xl md:text-2xl lg:text-4xl font-semibold">
-					Some of my projects:
-				</h3>
+					// Tamaño y posición aleatoria
+					const size = Math.random() * 10 + 5;
+					const posX = Math.random() * 100;
+					const posY = Math.random() * 100;
+					const animationDelay = Math.random() * 10;
+
+					particle.style.width = `${size}px`;
+					particle.style.height = `${size}px`;
+					particle.style.left = `${posX}%`;
+					particle.style.top = `${posY}%`;
+					particle.style.animationDelay = `${animationDelay}s`;
+
+					particlesBg.appendChild(particle);
+				}
+			});
+		</script>
+	</div>
+
+	<!-- Barra de navegación -->
+	<Navbar />
+
+	<!-- Sección Hero -->
+	<section
+		id="hero"
+		class="min-h-screen flex items-center relative overflow-hidden">
+		<div class="container text-center">
+			<div class="max-w-3xl mx-auto">
+				<h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fadeIn">
+					Hola, soy <span
+						class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600"
+						>Pablo Andrada</span
+					>
+				</h1>
+				<p
+					class="text-xl md:text-2xl text-gray-300 mb-10 animate-fadeIn delay-100">
+					Desarrollador Full Stack especializado en crear soluciones digitales
+					impactantes
+				</p>
+				<div class="animate-fadeIn delay-300">
+					<a href="#projects" class="btn mr-4">Ver proyectos</a>
+					<a
+						href="#contact"
+						class="btn bg-transparent border-white hover:border-indigo-500"
+						>Contacto</a
+					>
+				</div>
 			</div>
-			<div class="w-full grid place-content-center gap-16">
+		</div>
+
+		<!-- Flecha de desplazamiento -->
+		<a
+			href="#about"
+			class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-8 w-8 text-indigo-500"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+			</svg>
+		</a>
+	</section>
+
+	<!-- Sección Sobre Mí -->
+	<section id="about" class="section">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Sobre Mí</h2>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+				<div class="animate-fadeIn delay-100">
+					<div
+						class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
+						<h3 class="text-2xl font-bold mb-6 text-indigo-400">
+							Mi Experiencia
+						</h3>
+
+						<div class="timeline">
+							{
+								EXPERIENCE.map((exp, index) => (
+									<div
+										class="timeline-item animate-fadeIn"
+										style={`animation-delay: ${0.2 * index}s`}>
+										<div class="timeline-period">{exp.period}</div>
+										<div class="timeline-position">{exp.position}</div>
+										<p class="text-gray-300">{exp.description}</p>
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="animate-fadeIn delay-200">
+					<div
+						class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 h-full">
+						<h3 class="text-2xl font-bold mb-6 text-indigo-400">
+							Mis Habilidades
+						</h3>
+
+						<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">Frontend</div>
+								<ul class="text-gray-300 text-sm">
+									<li>React</li>
+									<li>JavaScript</li>
+									<li>HTML5/CSS3</li>
+									<li>TailwindCSS</li>
+								</ul>
+							</div>
+
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">Backend</div>
+								<ul class="text-gray-300 text-sm">
+									<li>Node.js</li>
+									<li>Express</li>
+									<li>PostgreSQL</li>
+									<li>MongoDB</li>
+								</ul>
+							</div>
+
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">DevOps</div>
+								<ul class="text-gray-300 text-sm">
+									<li>Git</li>
+									<li>Vercel</li>
+									<li>CI/CD</li>
+									<li>Docker</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="mt-8">
+							<h4 class="text-xl font-bold mb-4 text-indigo-400">Educación</h4>
+							<div class="mb-4">
+								<div class="font-bold">
+									Licenciatura en Ciencias de la Computación
+								</div>
+								<div class="text-gray-300">FAMAF, UNC (2024 - Presente)</div>
+							</div>
+							<div>
+								<div class="font-bold">Desarrollador Full Stack</div>
+								<div class="text-gray-300">HENRY Academy (2023)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sección Proyectos -->
+	<section id="projects" class="section bg-slate-900/30">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Proyectos Destacados</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{
 					PROJECTS.map((project, index) => (
-						<Project project={project} index={index} />
+						<div
+							class="project-card animate-fadeIn"
+							style={`animation-delay: ${0.2 * index}s`}>
+							<div class="project-image">
+								<img src={project.urlImg} alt={project.title} />
+							</div>
+							<div class="project-content">
+								<h3 class="project-title">{project.title}</h3>
+								<p class="project-description">{project.description}</p>
+
+								<div class="project-technologies">
+									{project.technologies.map((tech) => (
+										<span class="tech-badge">{tech}</span>
+									))}
+								</div>
+
+								<a
+									href={project.link}
+									target="_blank"
+									class="btn mt-4 w-full text-center">
+									Ver Proyecto
+								</a>
+							</div>
+						</div>
 					))
 				}
 			</div>
-		</section>
-		<section
-			id="contact"
-			class="mt-6 relative h-[610px] xs:h-[590px] sl:h-[540px] sm:h-[560px] lg:h-[610px]">
+		</div>
+	</section>
+
+	<!-- Sección Contacto -->
+	<section id="contact" class="section">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Contáctame</h2>
+
 			<div
-				class="rounded-lg bg-white shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md">
-				<h2
-					class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-					Let's get in touch!
-				</h2>
-				<p
-					class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-					If you have any questions, want to chat about a project, or just stop
-					by to say hello, feel free to fill out the form below!
-				</p>
-				<form action="#" class="space-y-8">
-					<div>
-						<label
-							for="email"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>E-mail</label
-						>
-						<input
-							type="email"
-							id="email"
-							class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-							placeholder="name@flowbite.com"
-							required
-						/>
+				class="max-w-2xl mx-auto bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
+				<form class="contact-form">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div class="form-group animate-fadeIn delay-100">
+							<input type="text" id="name" placeholder=" " required />
+							<label for="name">Nombre</label>
+						</div>
+
+						<div class="form-group animate-fadeIn delay-200">
+							<input type="email" id="email" placeholder=" " required />
+							<label for="email">Email</label>
+						</div>
 					</div>
-					<div>
-						<label
-							for="subject"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-							>Subject line</label
-						>
-						<input
-							type="text"
-							id="subject"
-							class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-							placeholder="Déjame saber en que puedo ayudar"
-							required
-						/>
+
+					<div class="form-group animate-fadeIn delay-300">
+						<input type="text" id="subject" placeholder=" " required />
+						<label for="subject">Asunto</label>
 					</div>
-					<div class="sm:col-span-2">
-						<label
-							for="message"
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-							>Message</label
-						>
-						<textarea
-							id="message"
-							rows="6"
-							class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							placeholder="Déjame un mensaje..."></textarea>
+
+					<div class="form-group animate-fadeIn delay-400">
+						<textarea id="message" rows="5" placeholder=" " required></textarea>
+						<label for="message">Mensaje</label>
 					</div>
-					<button
-						type="submit"
-						class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-						>Send message</button
-					>
+
+					<div class="text-center animate-fadeIn delay-500">
+						<button type="submit" class="btn px-10 py-3">
+							Enviar Mensaje
+						</button>
+					</div>
 				</form>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
+
 	<Footer />
+
+	<!-- Script para animaciones al hacer scroll -->
+	<script>
+		// Observador de intersección para animaciones
+		document.addEventListener("DOMContentLoaded", () => {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("animate-fadeIn");
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
+
+			document.querySelectorAll(".animate-fadeIn").forEach((el) => {
+				observer.observe(el);
+			});
+
+			// Scroll suave para enlaces internos
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+					const targetId = this.getAttribute("href");
+					const targetElement = document.querySelector(targetId);
+
+					if (targetElement) {
+						window.scrollTo({
+							top: targetElement.offsetTop - 80,
+							behavior: "smooth",
+						});
+					}
+				});
+			});
+		});
+	</script>
 </Layout>
