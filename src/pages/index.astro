@@ -194,7 +194,8 @@ const EXPERIENCE = [
 		position: absolute;
 		border-radius: 50%;
 		background: rgba(99, 102, 241, 0.2);
-		animation: float 15s infinite linear;
+		/* Eliminamos la animación fija en CSS, la asignaremos en JS */
+		/* animation: float 15s infinite linear; */
 	}
 
 	/* Botones */
@@ -396,9 +397,8 @@ const EXPERIENCE = [
 	<!-- Fondo de partículas -->
 	<div class="particles-bg" id="particles-bg">
 		<script>
-			// Script para crear partículas dinámicas
+			// Script para crear partículas dinámicas con duración aleatoria
 			document.addEventListener("DOMContentLoaded", () => {
-				// Aserción non-null (!) para que TS no lo marque como posible null
 				const particlesBg = document.getElementById("particles-bg")!;
 				const particleCount = 30;
 
@@ -410,13 +410,16 @@ const EXPERIENCE = [
 					const size = Math.random() * 10 + 5;
 					const posX = Math.random() * 100;
 					const posY = Math.random() * 100;
-					const animationDelay = Math.random() * 10;
+
+					// Duración aleatoria entre 6s y 12s
+					const randomDuration = (Math.random() * 6 + 6).toFixed(2) + "s";
 
 					particle.style.width = `${size}px`;
 					particle.style.height = `${size}px`;
 					particle.style.left = `${posX}%`;
 					particle.style.top = `${posY}%`;
-					particle.style.animationDelay = `${animationDelay}s`;
+					// Inyectamos la animación con duración aleatoria
+					particle.style.animation = `float ${randomDuration} infinite linear`;
 
 					particlesBg.appendChild(particle);
 				}
@@ -647,7 +650,6 @@ const EXPERIENCE = [
 
 	<!-- Script para animaciones al hacer scroll -->
 	<script>
-		// Observador de intersección para animaciones
 		document.addEventListener("DOMContentLoaded", () => {
 			const observer = new IntersectionObserver(
 				(entries) => {
@@ -668,16 +670,13 @@ const EXPERIENCE = [
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 				anchor.addEventListener("click", (e) => {
 					e.preventDefault();
-
-					// 1) Castear e.currentTarget a HTMLAnchorElement
+					// Usamos e.currentTarget en lugar de this, y casteamos a HTMLAnchorElement
 					const element = e.currentTarget as HTMLAnchorElement;
 					const targetId = element.getAttribute("href")!;
-
-					// 2) Castear la query a HTMLElement para poder usar offsetTop
+					// Casteamos a HTMLElement para usar offsetTop
 					const targetElement = document.querySelector(
 						targetId
 					) as HTMLElement | null;
-
 					if (targetElement) {
 						window.scrollTo({
 							top: targetElement.offsetTop - 80,
