@@ -6,954 +6,958 @@ import Layout from "../layouts/Layout.astro";
 
 // Datos de proyectos
 const PROJECTS = [
-  {
-    title: "Mechanic Workshop Booking System",
-    urlImg: "/Turnos -Taller Mecánica.png",
-    description:
-      "Sistema de gestión de citas para talleres mecánicos con roles de usuario y confirmaciones automáticas por email.",
-    link: "https://shift-application-1iwg.vercel.app",
-    technologies: [
-      "React",
-      "Node.js",
-      "PostgreSQL",
-      "TypeORM",
-      "TypeScript",
-      "CSS3",
-      "HTML5",
-    ],
-  },
-  {
-    title: "Rick and Morty APP",
-    urlImg: "/image.png",
-    description:
-      "Exploración de personajes mediante API con vista detallada y formulario de acceso.",
-    link: "https://rick-and-morty-project-zeta-one.vercel.app",
-    technologies: ["React", "API Integration", "JavaScript", "CSS3", "HTML5"],
-  },
-  {
-    title: "Movie Search App",
-    urlImg: "/project2(2).jpg",
-    description:
-      "Buscador de películas con detalles de sinopsis y año de lanzamiento.",
-    link: "https://movie-search-app-ffeh.vercel.app",
-    technologies: ["React", "API Integration", "CSS3"],
-  },
+	{
+		title: "Mechanic Workshop Booking System",
+		urlImg: "/Turnos -Taller Mecánica.png",
+		description:
+			"Sistema de gestión de citas para talleres mecánicos con roles de usuario y confirmaciones automáticas por email.",
+		link: "https://shift-application-1iwg.vercel.app",
+		technologies: [
+			"React",
+			"Node.js",
+			"PostgreSQL",
+			"TypeORM",
+			"TypeScript",
+			"CSS3",
+			"HTML5",
+		],
+	},
+	{
+		title: "Rick and Morty APP",
+		urlImg: "/image.png",
+		description:
+			"Exploración de personajes mediante API con vista detallada y formulario de acceso.",
+		link: "https://rick-and-morty-project-zeta-one.vercel.app",
+		technologies: ["React", "API Integration", "JavaScript", "CSS3", "HTML5"],
+	},
+	{
+		title: "Movie Search App",
+		urlImg: "/project2(2).jpg",
+		description:
+			"Buscador de películas con detalles de sinopsis y año de lanzamiento.",
+		link: "https://movie-search-app-ffeh.vercel.app",
+		technologies: ["React", "API Integration", "CSS3"],
+	},
 ];
 
 // Datos de experiencia
 const EXPERIENCE = [
-  {
-    period: "2024 - Presente",
-    position: "Desarrollador Full Stack Freelance",
-    description:
-      "Desarrollo de aplicaciones web personalizadas para diversos clientes, implementando soluciones escalables y mantenibles.",
-  },
-  {
-    period: "2023 - 2024",
-    position: "Desarrollador Backend en The Next Page",
-    description:
-      "Implementación de e-commerce para venta de libros con integración de Mercado Pago y envío de emails con Nodemailer.",
-  },
+	{
+		period: "2024 - Presente",
+		position: "Desarrollador Full Stack Freelance",
+		description:
+			"Desarrollo de aplicaciones web personalizadas para diversos clientes, implementando soluciones escalables y mantenibles.",
+	},
+	{
+		period: "2023 - 2024",
+		position: "Desarrollador Backend en The Next Page",
+		description:
+			"Implementación de e-commerce para venta de libros con integración de Mercado Pago y envío de emails con Nodemailer.",
+	},
 ];
 
 // Nuevos proyectos adicionales
 const OTHER_PROJECTS = [
-  {
-    title: "ConversorDeMonedas",
-    link: "https://github.com/Pablo-Andrada/ConversorDeMonedas_ONE",
-    technologies: ["JAVA", "API", "POO"],
-    color: "#f89820", // Naranja JAVA
-    icon: `<path d="M10.25 2.5c.918 0 1.75.82 1.75 1.857v.554c.71.153 1.371.443 1.958.854l.545-1.632a.5.5 0 0 1 .632-.316l1.498.5a.5.5 0 0 1 .316.633l-.5 1.498a6.6 6.6 0 0 1 1.434 1.055l1.415-1.124a.5.5 0 0 1 .7.078l1.06 1.325a.5.5 0 0 1-.077.7l-1.326 1.06a6.6 6.6 0 0 1 .001 2.37l1.326 1.06a.5.5 0 0 1 .077.7l-1.06 1.325a.5.5 0 0 1-.7.078l-1.415-1.124a6.6 6.6 0 0 1-1.434 1.055l.5 1.498a.5.5 0 0 1-.316.633l-1.498.5a.5.5 0 0 1-.633-.316l-.545-1.632a6.6 6.6 0 0 1-1.958.854v.554c0 1.037-.832 1.857-1.75 1.857h-2.5c-.918 0-1.75-.82-1.75-1.857v-.554a6.6 6.6 0 0 1-1.958-.854l-.545 1.632a.5.5 0 0 1-.633.316l-1.498-.5a.5.5 0 0 1-.316-.633l.5-1.498a6.6 6.6 0 0 1-1.434-1.055l-1.415 1.124a.5.5 0 0 1-.7-.078l-1.06-1.325a.5.5 0 0 1 .077-.7l1.326-1.06a6.6 6.6 0 0 1 0-2.37l-1.326-1.06a.5.5 0 0 1-.077-.7l1.06-1.325a.5.5 0 0 1 .7-.078l1.415 1.124a6.6 6.6 0 0 1 1.434-1.055l-.5-1.498a.5.5 0 0 1 .316-.633l1.498-.5a.5.5 0 0 1 .633.316l.545 1.632a6.6 6.6 0 0 1 1.958-.854v-.554c0-1.037.832-1.857 1.75-1.857h2.5zm-1.25 1.857a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25v5.643c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V4.357z"/>`
-  },
-  {
-    title: "CinemaClub",
-    link: "https://github.com/Pablo-Andrada/Cinema-Club/tree/main",
-    technologies: [
-      "TypeScript",
-      "HTML5",
-      "CSS3",
-      "Express",
-      "Mongoose",
-      "MongoDB",
-    ],
-    color: "#3178c6", // Azul TypeScript
-    icon: `<path d="M22.2 12c0-5.5-4.5-10-10-10S2.2 6.5 2.2 12s4.5 10 10 10 10-4.5 10-10zm-16.9.9V8.2h1.5c.6 0 1.2.1 1.6.3.4.2.7.5 1 .9.2.3.3.7.3 1.1 0 .4-.1.8-.3 1.1-.2.3-.5.6-.9.8-.4.2-.9.3-1.4.3h-.8v-1.8zm1.5-3.4v3.4h.4c.3 0 .6 0 .9-.1.3-.1.5-.2.7-.4.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.7-.2-.2-.4-.3-.7-.4-.3-.1-.6-.1-.9-.1h-.4zm5.2 3.4V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.2 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.3 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm-8.3 3.4V14h4.4v1.8h-4.4z"/>`
-  },
-  {
-    title: "LoanCalculatorApp",
-    link: "https://github.com/Pablo-Andrada/Loan-Calculator-App",
-    technologies: ["JavaScript", "React", "HTML5", "CSS3"],
-    color: "#f0db4f", // Amarillo JavaScript
-    icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm1.678 3.044c.369 0 .666.297.666.666v8.667a.666.666 0 01-1.332 0V7.71c0-.369.297-.666.666-.666zm-3.333 1.333c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666zm6.667 0c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666z"/>`
-  },
-  {
-    title: "SubscriptionPlataformTracker",
-    link: "https://github.com/Pablo-Andrada/Subscription-Platform-Tracker",
-    technologies: ["JavaScript", "React", "HTML5", "CSS3"],
-    color: "#61dafb", // Azul React
-    icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S5.5 15.59 5.5 12 8.41 5.5 12 5.5zm0 2c2.485 0 4.5 2.015 4.5 4.5s-2.015 4.5-4.5 4.5S7.5 14.485 7.5 12 9.515 7.5 12 7.5zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/>`
-  },
-  {
-    title: "ToDoListApp-TS",
-    link: "https://github.com/Pablo-Andrada/ToDoList-App-Ts/tree/main",
-    technologies: ["JavaScript", "React", "HTML5", "CSS3"],
-    color: "#764abc", // Púrpura Redux
-    icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm-1 3h2v6h-2V7zm3 0h2v6h-2V7zm-6 0h2v6H8V7z"/>`
-  },
+	{
+		title: "ConversorDeMonedas",
+		link: "https://github.com/Pablo-Andrada/ConversorDeMonedas_ONE",
+		technologies: ["JAVA", "API", "POO"],
+		color: "#f89820", // Naranja JAVA
+		icon: `<path d="M10.25 2.5c.918 0 1.75.82 1.75 1.857v.554c.71.153 1.371.443 1.958.854l.545-1.632a.5.5 0 0 1 .632-.316l1.498.5a.5.5 0 0 1 .316.633l-.5 1.498a6.6 6.6 0 0 1 1.434 1.055l1.415-1.124a.5.5 0 0 1 .7.078l1.06 1.325a.5.5 0 0 1-.077.7l-1.326 1.06a6.6 6.6 0 0 1 .001 2.37l1.326 1.06a.5.5 0 0 1 .077.7l-1.06 1.325a.5.5 0 0 1-.7.078l-1.415-1.124a6.6 6.6 0 0 1-1.434 1.055l.5 1.498a.5.5 0 0 1-.316.633l-1.498.5a.5.5 0 0 1-.633-.316l-.545-1.632a6.6 6.6 0 0 1-1.958.854v.554c0 1.037-.832 1.857-1.75 1.857h-2.5c-.918 0-1.75-.82-1.75-1.857v-.554a6.6 6.6 0 0 1-1.958-.854l-.545 1.632a.5.5 0 0 1-.633.316l-1.498-.5a.5.5 0 0 1-.316-.633l.5-1.498a6.6 6.6 0 0 1-1.434-1.055l-1.415 1.124a.5.5 0 0 1-.7-.078l-1.06-1.325a.5.5 0 0 1 .077-.7l1.326-1.06a6.6 6.6 0 0 1 0-2.37l-1.326-1.06a.5.5 0 0 1-.077-.7l1.06-1.325a.5.5 0 0 1 .7-.078l1.415 1.124a6.6 6.6 0 0 1 1.434-1.055l-.5-1.498a.5.5 0 0 1 .316-.633l1.498-.5a.5.5 0 0 1 .633.316l.545 1.632a6.6 6.6 0 0 1 1.958-.854v-.554c0-1.037.832-1.857 1.75-1.857h2.5zm-1.25 1.857a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25v5.643c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V4.357z"/>`,
+	},
+	{
+		title: "CinemaClub",
+		link: "https://github.com/Pablo-Andrada/Cinema-Club/tree/main",
+		technologies: [
+			"TypeScript",
+			"HTML5",
+			"CSS3",
+			"Express",
+			"Mongoose",
+			"MongoDB",
+		],
+		color: "#3178c6", // Azul TypeScript
+		icon: `<path d="M22.2 12c0-5.5-4.5-10-10-10S2.2 6.5 2.2 12s4.5 10 10 10 10-4.5 10-10zm-16.9.9V8.2h1.5c.6 0 1.2.1 1.6.3.4.2.7.5 1 .9.2.3.3.7.3 1.1 0 .4-.1.8-.3 1.1-.2.3-.5.6-.9.8-.4.2-.9.3-1.4.3h-.8v-1.8zm1.5-3.4v3.4h.4c.3 0 .6 0 .9-.1.3-.1.5-.2.7-.4.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.7-.2-.2-.4-.3-.7-.4-.3-.1-.6-.1-.9-.1h-.4zm5.2 3.4V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.2 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.3 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm-8.3 3.4V14h4.4v1.8h-4.4z"/>`,
+	},
+	{
+		title: "LoanCalculatorApp",
+		link: "https://github.com/Pablo-Andrada/Loan-Calculator-App",
+		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
+		color: "#f0db4f", // Amarillo JavaScript
+		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm1.678 3.044c.369 0 .666.297.666.666v8.667a.666.666 0 01-1.332 0V7.71c0-.369.297-.666.666-.666zm-3.333 1.333c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666zm6.667 0c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666z"/>`,
+	},
+	{
+		title: "SubscriptionPlataformTracker",
+		link: "https://github.com/Pablo-Andrada/Subscription-Platform-Tracker",
+		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
+		color: "#61dafb", // Azul React
+		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S5.5 15.59 5.5 12 8.41 5.5 12 5.5zm0 2c2.485 0 4.5 2.015 4.5 4.5s-2.015 4.5-4.5 4.5S7.5 14.485 7.5 12 9.515 7.5 12 7.5zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/>`,
+	},
+	{
+		title: "ToDoListApp-TS",
+		link: "https://github.com/Pablo-Andrada/ToDoList-App-Ts/tree/main",
+		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
+		color: "#764abc", // Púrpura Redux
+		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm-1 3h2v6h-2V7zm3 0h2v6h-2V7zm-6 0h2v6H8V7z"/>`,
+	},
 ];
 ---
 
 <style is:global>
-  /* Variables globales */
-  :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --dark: #1e293b;
-    --light: #f8fafc;
-    --gray: #94a3b8;
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  }
+	/* Variables globales */
+	:root {
+		--primary: #6366f1;
+		--primary-dark: #4f46e5;
+		--dark: #1e293b;
+		--light: #f8fafc;
+		--gray: #94a3b8;
+		--transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+	}
 
-  /* Reset y estilos base */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
+	/* Reset y estilos base */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		scroll-behavior: smooth;
+	}
 
-  body {
-    font-family: "Inter", sans-serif;
-    background-color: #0f172a;
-    color: var(--light);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+	body {
+		font-family: "Inter", sans-serif;
+		background-color: #0f172a;
+		color: var(--light);
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
 
-  /* Animaciones clave */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	/* Animaciones clave */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
 
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
 
-  @keyframes blinkCaret {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: var(--primary);
-    }
-  }
+	@keyframes blinkCaret {
+		from,
+		to {
+			border-color: transparent;
+		}
+		50% {
+			border-color: var(--primary);
+		}
+	}
 
-  /* Utilidades */
-  .animate-fadeIn {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-  }
+	/* Utilidades */
+	.animate-fadeIn {
+		animation: fadeIn 0.8s ease-out forwards;
+		opacity: 0;
+	}
 
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
 
-  .delay-100 {
-    animation-delay: 0.1s;
-  }
-  .delay-200 {
-    animation-delay: 0.2s;
-  }
-  .delay-300 {
-    animation-delay: 0.3s;
-  }
+	.delay-100 {
+		animation-delay: 0.1s;
+	}
+	.delay-200 {
+		animation-delay: 0.2s;
+	}
+	.delay-300 {
+		animation-delay: 0.3s;
+	}
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
 
-  .section {
-    padding: 8rem 0;
-  }
+	.section {
+		padding: 8rem 0;
+	}
 
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    position: relative;
-    display: inline-block;
-  }
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 3rem;
+		position: relative;
+		display: inline-block;
+	}
 
-  .section-title::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 50%;
-    height: 4px;
-    background: var(--primary);
-    border-radius: 2px;
-  }
+	.section-title::after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 50%;
+		height: 4px;
+		background: var(--primary);
+		border-radius: 2px;
+	}
 
-  /* Fondo con efecto de partículas */
-  .particles-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
-    overflow: hidden;
-  }
+	/* Fondo con efecto de partículas */
+	.particles-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+		overflow: hidden;
+	}
 
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(99, 102, 241, 0.2);
-  }
+	.particle {
+		position: absolute;
+		border-radius: 50%;
+		background: rgba(99, 102, 241, 0.2);
+	}
 
-  /* Botones */
-  .btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background: var(--primary);
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    border: 2px solid var(--primary);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
+	/* Botones */
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 2rem;
+		background: var(--primary);
+		color: white;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: var(--transition);
+		border: 2px solid var(--primary);
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+	}
 
-  .btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background: var(--dark);
-    transition: var(--transition);
-    z-index: -1;
-  }
+	.btn::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0%;
+		height: 100%;
+		background: var(--dark);
+		transition: var(--transition);
+		z-index: -1;
+	}
 
-  .btn:hover::before {
-    width: 100%;
-  }
+	.btn:hover::before {
+		width: 100%;
+	}
 
-  .btn:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-  }
+	.btn:hover {
+		color: var(--primary);
+		border-color: var(--primary);
+	}
 
-  /* Tarjetas de proyectos */
-  .project-card {
-    border-radius: 16px;
-    overflow: hidden;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    transition: var(--transition);
-    position: relative;
-    height: 100%;
-  }
+	/* Tarjetas de proyectos */
+	.project-card {
+		border-radius: 16px;
+		overflow: hidden;
+		background: rgba(15, 23, 42, 0.6);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		transition: var(--transition);
+		position: relative;
+		height: 100%;
+	}
 
-  .project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary);
-    box-shadow: 0 20px 30px rgba(99, 102, 241, 0.2);
-  }
+	.project-card:hover {
+		transform: translateY(-10px);
+		border-color: var(--primary);
+		box-shadow: 0 20px 30px rgba(99, 102, 241, 0.2);
+	}
 
-  .project-image {
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-  }
+	.project-image {
+		height: 250px;
+		overflow: hidden;
+		position: relative;
+	}
 
-  .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-  }
+	.project-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: var(--transition);
+	}
 
-  .project-card:hover .project-image img {
-    transform: scale(1.1);
-  }
+	.project-card:hover .project-image img {
+		transform: scale(1.1);
+	}
 
-  .project-content {
-    padding: 1.5rem;
-  }
+	.project-content {
+		padding: 1.5rem;
+	}
 
-  .project-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
+	.project-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
 
-  .project-description {
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-  }
+	.project-description {
+		color: var(--gray);
+		margin-bottom: 1.5rem;
+	}
 
-  .project-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
+	.project-technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
 
-  .tech-badge {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--primary);
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    border: 1px solid var(--primary);
-  }
+	.tech-badge {
+		background: rgba(99, 102, 241, 0.1);
+		color: var(--primary);
+		padding: 0.3rem 0.8rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
+		border: 1px solid var(--primary);
+	}
 
-  /* Timeline de experiencia */
-  .timeline {
-    position: relative;
-    padding-left: 30px;
-  }
+	/* Timeline de experiencia */
+	.timeline {
+		position: relative;
+		padding-left: 30px;
+	}
 
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 7px;
-    top: 5px;
-    height: 95%;
-    width: 2px;
-    background: var(--primary);
-  }
+	.timeline::before {
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 5px;
+		height: 95%;
+		width: 2px;
+		background: var(--primary);
+	}
 
-  .timeline-item {
-    position: relative;
-    margin-bottom: 2.5rem;
-  }
+	.timeline-item {
+		position: relative;
+		margin-bottom: 2.5rem;
+	}
 
-  .timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -30px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--primary);
-    border: 3px solid var(--dark);
-  }
+	.timeline-item::before {
+		content: "";
+		position: absolute;
+		left: -30px;
+		top: 5px;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background: var(--primary);
+		border: 3px solid var(--dark);
+	}
 
-  .timeline-period {
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
+	.timeline-period {
+		font-weight: 600;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
 
-  .timeline-position {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
+	.timeline-position {
+		font-size: 1.25rem;
+		font-weight: 700;
+		margin-bottom: 0.75rem;
+	}
 
-  /* Formulario de contacto */
-  .contact-form .form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
+	/* Formulario de contacto */
+	.contact-form .form-group {
+		margin-bottom: 1.5rem;
+		position: relative;
+	}
 
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 8px;
-    color: var(--light);
-    font-size: 1rem;
-    transition: var(--transition);
-  }
+	.contact-form input,
+	.contact-form textarea {
+		width: 100%;
+		padding: 1rem;
+		background: rgba(15, 23, 42, 0.5);
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		border-radius: 8px;
+		color: var(--light);
+		font-size: 1rem;
+		transition: var(--transition);
+	}
 
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-  }
+	.contact-form input:focus,
+	.contact-form textarea:focus {
+		outline: none;
+		border-color: var(--primary);
+		box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+	}
 
-  .contact-form label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: var(--gray);
-    pointer-events: none;
-    transition: var(--transition);
-  }
+	.contact-form label {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		color: var(--gray);
+		pointer-events: none;
+		transition: var(--transition);
+	}
 
-  .contact-form input:focus + label,
-  .contact-form input:not(:placeholder-shown) + label,
-  .contact-form textarea:focus + label,
-  .contact-form textarea:not(:placeholder-shown) + label {
-    top: -0.8rem;
-    left: 0.5rem;
-    font-size: 0.8rem;
-    background: var(--dark);
-    padding: 0 0.5rem;
-    color: var(--primary);
-  }
+	.contact-form input:focus + label,
+	.contact-form input:not(:placeholder-shown) + label,
+	.contact-form textarea:focus + label,
+	.contact-form textarea:not(:placeholder-shown) + label {
+		top: -0.8rem;
+		left: 0.5rem;
+		font-size: 0.8rem;
+		background: var(--dark);
+		padding: 0 0.5rem;
+		color: var(--primary);
+	}
 
-  /* Estilos para la nueva sección de otros proyectos */
-  .other-projects-section {
-    padding: 5rem 0;
-    background: rgba(15, 23, 42, 0.3);
-  }
+	/* Estilos para la nueva sección de otros proyectos */
+	.other-projects-section {
+		padding: 5rem 0;
+		background: rgba(15, 23, 42, 0.3);
+	}
 
-  .other-projects-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-  }
+	.other-projects-title {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		position: relative;
+		display: inline-block;
+	}
 
-  .other-projects-title::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 40%;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 2px;
-  }
+	.other-projects-title::after {
+		content: "";
+		position: absolute;
+		bottom: -8px;
+		left: 0;
+		width: 40%;
+		height: 3px;
+		background: var(--primary);
+		border-radius: 2px;
+	}
 
-  .other-projects-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) rgba(15, 23, 42, 0.3);
-  }
+	.other-projects-container {
+		display: flex;
+		overflow-x: auto;
+		gap: 1.5rem;
+		padding: 1rem 0;
+		scrollbar-width: thin;
+		scrollbar-color: var(--primary) rgba(15, 23, 42, 0.3);
+	}
 
-  .other-projects-container::-webkit-scrollbar {
-    height: 8px;
-  }
+	.other-projects-container::-webkit-scrollbar {
+		height: 8px;
+	}
 
-  .other-projects-container::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.3);
-    border-radius: 4px;
-  }
+	.other-projects-container::-webkit-scrollbar-track {
+		background: rgba(15, 23, 42, 0.3);
+		border-radius: 4px;
+	}
 
-  .other-projects-container::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 4px;
-  }
+	.other-projects-container::-webkit-scrollbar-thumb {
+		background: var(--primary);
+		border-radius: 4px;
+	}
 
-  .other-project-card {
-    flex: 0 0 280px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    transition: var(--transition);
-    position: relative;
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-  }
+	.other-project-card {
+		flex: 0 0 280px;
+		border-radius: 12px;
+		overflow: hidden;
+		background: rgba(15, 23, 42, 0.6);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		transition: var(--transition);
+		position: relative;
+		height: 280px;
+		display: flex;
+		flex-direction: column;
+	}
 
-  .other-project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-  }
+	.other-project-card:hover {
+		transform: translateY(-5px);
+		border-color: var(--primary);
+		box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+	}
 
-  .other-project-image {
-    height: 140px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	.other-project-image {
+		height: 140px;
+		overflow: hidden;
+		position: relative;
+		background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-  .other-project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-  }
+	.other-project-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: var(--transition);
+	}
 
-  .other-project-card:hover .other-project-image img {
-    transform: scale(1.05);
-  }
+	.other-project-card:hover .other-project-image img {
+		transform: scale(1.05);
+	}
 
-  .other-project-content {
-    padding: 1rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+	.other-project-content {
+		padding: 1rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
 
-  .other-project-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--light);
-  }
+	.other-project-title {
+		font-size: 1.1rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: var(--light);
+	}
 
-  .other-project-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: auto;
-  }
+	.other-project-technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-top: auto;
+	}
 
-  .other-tech-badge {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--primary);
-    padding: 0.2rem 0.6rem;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    border: 1px solid var(--primary);
-  }
+	.other-tech-badge {
+		background: rgba(99, 102, 241, 0.1);
+		color: var(--primary);
+		padding: 0.2rem 0.6rem;
+		border-radius: 50px;
+		font-size: 0.7rem;
+		border: 1px solid var(--primary);
+	}
 
-  .other-project-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
+	.other-project-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
 
-  .github-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    padding: 5px;
-    z-index: 3;
-    transition: var(--transition);
-  }
+	.github-icon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: white;
+		background: rgba(0, 0, 0, 0.5);
+		border-radius: 50%;
+		padding: 5px;
+		z-index: 3;
+		transition: var(--transition);
+	}
 
-  .other-project-card:hover .github-icon {
-    background: var(--primary);
-  }
+	.other-project-card:hover .github-icon {
+		background: var(--primary);
+	}
 
-  /* Nuevos estilos para SVG personalizados */
-  .project-svg {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .project-svg-content {
-    width: 80%;
-    height: 80%;
-  }
+	/* Nuevos estilos para SVG personalizados */
+	.project-svg {
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.project-svg-content {
+		width: 80%;
+		height: 80%;
+	}
 </style>
 
 <Layout title="Pablo Andrada | FullStack Web Developer">
-  <!-- Fondo de partículas -->
-  <div class="particles-bg" id="particles-bg">
-    <script>
-      // Script para crear partículas dinámicas con duración aleatoria
-      document.addEventListener("DOMContentLoaded", () => {
-        const particlesBg = document.getElementById("particles-bg");
-        const particleCount = 30;
+	<!-- Fondo de partículas -->
+	<div class="particles-bg" id="particles-bg">
+		<script>
+			// Script para crear partículas dinámicas con duración aleatoria
+			document.addEventListener("DOMContentLoaded", () => {
+				const particlesBg = document.getElementById("particles-bg");
+				if (!particlesBg) return; // Verificar si el elemento existe
 
-        for (let i = 0; i < particleCount; i++) {
-          const particle = document.createElement("div");
-          particle.classList.add("particle");
+				const particleCount = 30;
 
-          // Tamaño y posición aleatoria
-          const size = Math.random() * 10 + 5;
-          const posX = Math.random() * 100;
-          const posY = Math.random() * 100;
+				for (let i = 0; i < particleCount; i++) {
+					const particle = document.createElement("div");
+					particle.classList.add("particle");
 
-          // Duración aleatoria entre 6s y 12s
-          const randomDuration = (Math.random() * 6 + 6).toFixed(2) + "s";
+					// Tamaño y posición aleatoria
+					const size = Math.random() * 10 + 5;
+					const posX = Math.random() * 100;
+					const posY = Math.random() * 100;
 
-          particle.style.width = `${size}px`;
-          particle.style.height = `${size}px`;
-          particle.style.left = `${posX}%`;
-          particle.style.top = `${posY}%`;
-          // Inyectamos la animación con duración aleatoria
-          particle.style.animation = `float ${randomDuration} infinite linear`;
+					// Duración aleatoria entre 6s y 12s
+					const randomDuration = (Math.random() * 6 + 6).toFixed(2) + "s";
 
-          particlesBg.appendChild(particle);
-        }
-      });
-    </script>
-  </div>
+					particle.style.width = `${size}px`;
+					particle.style.height = `${size}px`;
+					particle.style.left = `${posX}%`;
+					particle.style.top = `${posY}%`;
+					// Inyectamos la animación con duración aleatoria
+					particle.style.animation = `float ${randomDuration} infinite linear`;
 
-  <!-- Barra de navegación -->
-  <Navbar />
+					particlesBg.appendChild(particle);
+				}
+			});
+		</script>
+	</div>
 
-  <!-- Sección Hero -->
-  <section
-    id="hero"
-    class="min-h-screen flex items-center relative overflow-hidden">
-    <div class="container text-center">
-      <div class="max-w-3xl mx-auto">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fadeIn">
-          Hola, soy
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600"
-            >Pablo Andrada</span
-          >
-        </h1>
-        <p
-          class="text-xl md:text-2xl text-gray-300 mb-10 animate-fadeIn delay-100">
-          Desarrollador Full Stack especializado en crear soluciones digitales
-          impactantes
-        </p>
-        <div class="animate-fadeIn delay-300">
-          <a href="#projects" class="btn mr-4">Ver proyectos</a>
-          <a
-            href="#contact"
-            class="btn bg-transparent border-white hover:border-indigo-500"
-            >Contacto</a
-          >
-        </div>
-      </div>
-    </div>
+	<!-- Barra de navegación -->
+	<Navbar />
 
-    <!-- Flecha de desplazamiento -->
-    <a
-      href="#about"
-      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-8 w-8 text-indigo-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-    </a>
-  </section>
+	<!-- Sección Hero -->
+	<section
+		id="hero"
+		class="min-h-screen flex items-center relative overflow-hidden">
+		<div class="container text-center">
+			<div class="max-w-3xl mx-auto">
+				<h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fadeIn">
+					Hola, soy
+					<span
+						class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600"
+						>Pablo Andrada</span
+					>
+				</h1>
+				<p
+					class="text-xl md:text-2xl text-gray-300 mb-10 animate-fadeIn delay-100">
+					Desarrollador Full Stack especializado en crear soluciones digitales
+					impactantes
+				</p>
+				<div class="animate-fadeIn delay-300">
+					<a href="#projects" class="btn mr-4">Ver proyectos</a>
+					<a
+						href="#contact"
+						class="btn bg-transparent border-white hover:border-indigo-500"
+						>Contacto</a
+					>
+				</div>
+			</div>
+		</div>
 
-  <!-- Sección Sobre Mí -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title animate-fadeIn">Sobre Mí</h2>
+		<!-- Flecha de desplazamiento -->
+		<a
+			href="#about"
+			class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-8 w-8 text-indigo-500"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+			</svg>
+		</a>
+	</section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="animate-fadeIn delay-100">
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
-            <h3 class="text-2xl font-bold mb-6 text-indigo-400">
-              Mi Experiencia
-            </h3>
+	<!-- Sección Sobre Mí -->
+	<section id="about" class="section">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Sobre Mí</h2>
 
-            <div class="timeline">
-              {
-                EXPERIENCE.map((exp, index) => (
-                  <div
-                    class="timeline-item animate-fadeIn"
-                    style={`animation-delay: ${0.2 * index}s`}>
-                    <div class="timeline-period">{exp.period}</div>
-                    <div class="timeline-position">{exp.position}</div>
-                    <p class="text-gray-300">{exp.description}</p>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+				<div class="animate-fadeIn delay-100">
+					<div
+						class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
+						<h3 class="text-2xl font-bold mb-6 text-indigo-400">
+							Mi Experiencia
+						</h3>
 
-        <div class="animate-fadeIn delay-200">
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 h-full">
-            <h3 class="text-2xl font-bold mb-6 text-indigo-400">
-              Mis Habilidades
-            </h3>
+						<div class="timeline">
+							{
+								EXPERIENCE.map((exp, index) => (
+									<div
+										class="timeline-item animate-fadeIn"
+										style={`animation-delay: ${0.2 * index}s`}>
+										<div class="timeline-period">{exp.period}</div>
+										<div class="timeline-position">{exp.position}</div>
+										<p class="text-gray-300">{exp.description}</p>
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div
-                class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
-                <div class="text-indigo-500 font-bold mb-2">Frontend</div>
-                <ul class="text-gray-300 text-sm">
-                  <li>React</li>
-                  <li>JavaScript</li>
-                  <li>HTML5/CSS3</li>
-                  <li>TailwindCSS</li>
-                </ul>
-              </div>
+				<div class="animate-fadeIn delay-200">
+					<div
+						class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 h-full">
+						<h3 class="text-2xl font-bold mb-6 text-indigo-400">
+							Mis Habilidades
+						</h3>
 
-              <div
-                class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
-                <div class="text-indigo-500 font-bold mb-2">Backend</div>
-                <ul class="text-gray-300 text-sm">
-                  <li>Node.js</li>
-                  <li>Express</li>
-                  <li>PostgreSQL</li>
-                  <li>MongoDB</li>
-                </ul>
-              </div>
+						<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">Frontend</div>
+								<ul class="text-gray-300 text-sm">
+									<li>React</li>
+									<li>JavaScript</li>
+									<li>HTML5/CSS3</li>
+									<li>TailwindCSS</li>
+								</ul>
+							</div>
 
-              <div
-                class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
-                <div class="text-indigo-500 font-bold mb-2">DevOps</div>
-                <ul class="text-gray-300 text-sm">
-                  <li>Git</li>
-                  <li>Vercel</li>
-                  <li>CI/CD</li>
-                  <li>Docker</li>
-                </ul>
-              </div>
-            </div>
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">Backend</div>
+								<ul class="text-gray-300 text-sm">
+									<li>Node.js</li>
+									<li>Express</li>
+									<li>PostgreSQL</li>
+									<li>MongoDB</li>
+								</ul>
+							</div>
 
-            <div class="mt-8">
-              <h4 class="text-xl font-bold mb-4 text-indigo-400">Educación</h4>
-              <div class="mb-4">
-                <div class="font-bold">
-                  Licenciatura en Ciencias de la Computación
-                </div>
-                <div class="text-gray-300">FAMAF, UNC (2024 - Presente)</div>
-              </div>
-              <div>
-                <div class="font-bold">Desarrollador Full Stack</div>
-                <div class="text-gray-300">HENRY Academy (2023)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+							<div
+								class="bg-slate-900/50 p-4 rounded-lg border border-slate-800 hover:border-indigo-500 transition-all">
+								<div class="text-indigo-500 font-bold mb-2">DevOps</div>
+								<ul class="text-gray-300 text-sm">
+									<li>Git</li>
+									<li>Vercel</li>
+									<li>CI/CD</li>
+									<li>Docker</li>
+								</ul>
+							</div>
+						</div>
 
-  <!-- Sección Proyectos -->
-  <section id="projects" class="section bg-slate-900/30">
-    <div class="container">
-      <h2 class="section-title animate-fadeIn">Proyectos Destacados</h2>
+						<div class="mt-8">
+							<h4 class="text-xl font-bold mb-4 text-indigo-400">Educación</h4>
+							<div class="mb-4">
+								<div class="font-bold">
+									Licenciatura en Ciencias de la Computación
+								</div>
+								<div class="text-gray-300">FAMAF, UNC (2024 - Presente)</div>
+							</div>
+							<div>
+								<div class="font-bold">Desarrollador Full Stack</div>
+								<div class="text-gray-300">HENRY Academy (2023)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-          PROJECTS.map((project, index) => (
-            <div
-              class="project-card animate-fadeIn"
-              style={`animation-delay: ${0.2 * index}s`}>
-              <div class="project-image">
-                <img src={project.urlImg} alt={project.title} />
-              </div>
-              <div class="project-content">
-                <h3 class="project-title">{project.title}</h3>
-                <p class="project-description">{project.description}</p>
+	<!-- Sección Proyectos -->
+	<section id="projects" class="section bg-slate-900/30">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Proyectos Destacados</h2>
 
-                <div class="project-technologies">
-                  {project.technologies.map((tech) => (
-                    <span class="tech-badge">{tech}</span>
-                  ))}
-                </div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{
+					PROJECTS.map((project, index) => (
+						<div
+							class="project-card animate-fadeIn"
+							style={`animation-delay: ${0.2 * index}s`}>
+							<div class="project-image">
+								<img src={project.urlImg} alt={project.title} />
+							</div>
+							<div class="project-content">
+								<h3 class="project-title">{project.title}</h3>
+								<p class="project-description">{project.description}</p>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  class="btn mt-4 w-full text-center">
-                  Ver Proyecto
-                </a>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+								<div class="project-technologies">
+									{project.technologies.map((tech) => (
+										<span class="tech-badge">{tech}</span>
+									))}
+								</div>
 
-  <!-- Sección Otros Proyectos -->
-  <section id="other-projects" class="other-projects-section">
-    <div class="container">
-      <h2 class="other-projects-title animate-fadeIn">Otros Proyectos</h2>
-      
-      <div class="other-projects-container">
-        {
-          OTHER_PROJECTS.map((project, index) => (
-            <div 
-              class="other-project-card animate-fadeIn" 
-              style={`animation-delay: ${0.1 * index}s`}
-            >
-              <div class="other-project-image">
-                <div class="project-svg" style={`background: ${project.color}`}>
-                  <svg 
-                    class="project-svg-content" 
-                    viewBox="0 0 24 24"
-                    fill="#ffffff"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    ${project.icon}
-                  </svg>
-                </div>
-                <svg 
-                  class="github-icon" 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  stroke-width="2" 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                </svg>
-              </div>
-              <div class="other-project-content">
-                <h3 class="other-project-title">{project.title}</h3>
-                <div class="other-project-technologies">
-                  {project.technologies.map((tech) => (
-                    <span class="other-tech-badge">{tech}</span>
-                  ))}
-                </div>
-              </div>
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="other-project-link"
-              ></a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+								<a
+									href={project.link}
+									target="_blank"
+									class="btn mt-4 w-full text-center">
+									Ver Proyecto
+								</a>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
 
-  <!-- Sección Contacto -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title animate-fadeIn">Contáctame</h2>
+	<!-- Sección Otros Proyectos -->
+	<section id="other-projects" class="other-projects-section">
+		<div class="container">
+			<h2 class="other-projects-title animate-fadeIn">Otros Proyectos</h2>
 
-      <div
-        class="max-w-2xl mx-auto bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
-        <form class="contact-form">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="form-group animate-fadeIn delay-100">
-              <input type="text" id="name" placeholder=" " required />
-              <label for="name">Nombre</label>
-            </div>
+			<div class="other-projects-container">
+				{
+					OTHER_PROJECTS.map((project, index) => (
+						<div
+							class="other-project-card animate-fadeIn"
+							style={`animation-delay: ${0.1 * index}s`}>
+							<div class="other-project-image">
+								<div class="project-svg" style={`background: ${project.color}`}>
+									<svg
+										class="project-svg-content"
+										viewBox="0 0 24 24"
+										fill="#ffffff"
+										xmlns="http://www.w3.org/2000/svg">
+										${project.icon}
+									</svg>
+								</div>
+								<svg
+									class="github-icon"
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+									<path d="M9 18c-4.51 2-5-2-7-2" />
+								</svg>
+							</div>
+							<div class="other-project-content">
+								<h3 class="other-project-title">{project.title}</h3>
+								<div class="other-project-technologies">
+									{project.technologies.map((tech) => (
+										<span class="other-tech-badge">{tech}</span>
+									))}
+								</div>
+							</div>
+							<a
+								href={project.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="other-project-link"
+							/>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
 
-            <div class="form-group animate-fadeIn delay-200">
-              <input type="email" id="email" placeholder=" " required />
-              <label for="email">Email</label>
-            </div>
-          </div>
+	<!-- Sección Contacto -->
+	<section id="contact" class="section">
+		<div class="container">
+			<h2 class="section-title animate-fadeIn">Contáctame</h2>
 
-          <div class="form-group animate-fadeIn delay-300">
-            <input type="text" id="subject" placeholder=" " required />
-            <label for="subject">Asunto</label>
-          </div>
+			<div
+				class="max-w-2xl mx-auto bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
+				<form class="contact-form">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div class="form-group animate-fadeIn delay-100">
+							<input type="text" id="name" placeholder=" " required />
+							<label for="name">Nombre</label>
+						</div>
 
-          <div class="form-group animate-fadeIn delay-400">
-            <textarea id="message" rows="5" placeholder=" " required></textarea>
-            <label for="message">Mensaje</label>
-          </div>
+						<div class="form-group animate-fadeIn delay-200">
+							<input type="email" id="email" placeholder=" " required />
+							<label for="email">Email</label>
+						</div>
+					</div>
 
-          <div class="text-center animate-fadeIn delay-500">
-            <button type="submit" class="btn px-10 py-3">
-              Enviar Mensaje
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+					<div class="form-group animate-fadeIn delay-300">
+						<input type="text" id="subject" placeholder=" " required />
+						<label for="subject">Asunto</label>
+					</div>
 
-  <Footer />
+					<div class="form-group animate-fadeIn delay-400">
+						<textarea id="message" rows="5" placeholder=" " required></textarea>
+						<label for="message">Mensaje</label>
+					</div>
 
-  <!-- Script para animaciones al hacer scroll -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("animate-fadeIn");
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+					<div class="text-center animate-fadeIn delay-500">
+						<button type="submit" class="btn px-10 py-3">
+							Enviar Mensaje
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 
-      document.querySelectorAll(".animate-fadeIn").forEach((el) => {
-        observer.observe(el);
-      });
+	<Footer />
 
-      // Scroll suave para enlaces internos
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", (e) => {
-          e.preventDefault();
-          // Usamos e.currentTarget en lugar de this, y casteamos a HTMLAnchorElement
-          const element = e.currentTarget;
-          const targetId = element.getAttribute("href");
-          // Casteamos a HTMLElement para usar offsetTop
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-    });
-  </script>
+	<!-- Script para animaciones al hacer scroll - CORREGIDO -->
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			// Animaciones al hacer scroll
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("animate-fadeIn");
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
+
+			document.querySelectorAll(".animate-fadeIn").forEach((el) => {
+				observer.observe(el);
+			});
+
+			// Scroll suave para enlaces internos - CORRECCIÓN AQUÍ
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", (e) => {
+					e.preventDefault();
+
+					// Corrección: Usar HTMLElement y verificar existencia
+					const element = e.currentTarget;
+					if (!element || !(element instanceof HTMLElement)) return;
+
+					const targetId = element.getAttribute("href");
+					if (!targetId) return;
+
+					const targetElement = document.querySelector(targetId);
+					if (targetElement) {
+						window.scrollTo({
+							top: targetElement.offsetTop - 80,
+							behavior: "smooth",
+						});
+					}
+				});
+			});
+		});
+	</script>
 </Layout>
