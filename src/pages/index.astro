@@ -918,7 +918,7 @@ const OTHER_PROJECTS = [
 
 	<Footer />
 
-	<!-- Script para animaciones al hacer scroll - CORREGIDO -->
+	<!-- Script para animaciones al hacer scroll - CORREGIDO PARA VERCEL -->
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			// Animaciones al hacer scroll
@@ -937,20 +937,23 @@ const OTHER_PROJECTS = [
 				observer.observe(el);
 			});
 
-			// Scroll suave para enlaces internos - CORRECCIÓN AQUÍ
+			// Scroll suave para enlaces internos - CORRECCIÓN PARA VERCEL
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 				anchor.addEventListener("click", (e) => {
 					e.preventDefault();
 
-					// Corrección: Usar HTMLElement y verificar existencia
+					// Corrección 1: Verificar que es un elemento HTML
 					const element = e.currentTarget;
 					if (!element || !(element instanceof HTMLElement)) return;
 
+					// Corrección 2: Obtener el href
 					const targetId = element.getAttribute("href");
 					if (!targetId) return;
 
+					// Corrección 3: Buscar el elemento y verificar que es HTMLElement
 					const targetElement = document.querySelector(targetId);
-					if (targetElement) {
+					if (targetElement instanceof HTMLElement) {
+						// Corrección 4: Usar offsetTop solo si es HTMLElement
 						window.scrollTo({
 							top: targetElement.offsetTop - 80,
 							behavior: "smooth",
