@@ -3,6 +3,10 @@ import Footer from "../components/Footer.astro";
 import Navbar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 
+// Si estás en Vercel -> define PUBLIC_FORMSPREE_ENDPOINT en Environment Variables
+const FORMSPREE_ENDPOINT =
+	import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? "YOUR_FORMSPREE_ENDPOINT_HERE";
+
 // Datos de proyectos
 const PROJECTS = [
 	{
@@ -25,7 +29,7 @@ const PROJECTS = [
 	},
 	{
 		title: "The Next Page — Plataforma / E-commerce (Demo)",
-		urlImg: "/TheNextPage.png", // usa tu imagen o reemplaza con /nextpage-demo.png si la subís
+		urlImg: "/TheNextPage.png",
 		description:
 			"Demo e-commerce orientado a flujo de compra y checkout. Mi rol principal: Desarrollador Backend — diseño de API, modelado de órdenes y integración con proveedores de pago (Mercado Pago / Stripe).",
 		link: "https://the-next-page.vercel.app/home",
@@ -949,7 +953,7 @@ const OTHER_PROJECTS = [
 					class="contact-form"
 					id="contact-form"
 					method="POST"
-					data-endpoint="YOUR_FORMSPREE_ENDPOINT_HERE">
+					data-endpoint={FORMSPREE_ENDPOINT}>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div class="form-group animate-fadeIn delay-100">
 							<input
@@ -1061,7 +1065,8 @@ const OTHER_PROJECTS = [
 			/* -----------------------------
 				FORMSPREE: manejo de envío
 				- El formulario tiene el atributo data-endpoint con tu URL de Formspree.
-				- Reemplaza "YOUR_FORMSPREE_ENDPOINT_HERE" por la URL real que te dieron.
+				- Reemplaza "YOUR_FORMSPREE_ENDPOINT_HERE" por la URL real que te dieron
+				  o define PUBLIC_FORMSPREE_ENDPOINT en Vercel.
 				- El script envía JSON y muestra mensajes de estado.
 			------------------------------*/
 			(function setupContactForm() {
@@ -1073,41 +1078,56 @@ const OTHER_PROJECTS = [
 				const statusEl = document.getElementById("form-status");
 				const submitBtn = form.querySelector('button[type="submit"]');
 
-				// Recuperar endpoint desde dataset del form
+				// Recuperar endpoint desde dataset del form (trim para seguridad)
 				const endpoint =
 					form.dataset && form.dataset.endpoint
 						? form.dataset.endpoint.trim()
 						: "";
 
+				// LOG diagnóstico (ver en consola)
+				console.log("[ContactForm] endpoint RAW:", endpoint);
+
+				// Detectar placeholders comunes
+				const placeholderExamples = [
+					"YOUR_FORMSPREE_ENDPOINT_HERE",
+					"https://formspree.io/f/xldprnjj",
+					"https://formspree.io/f/xxxxx",
+				];
+
+				if (
+					!endpoint ||
+					placeholderExamples.some((p) =>
+						endpoint.toLowerCase().includes(p.toLowerCase())
+					)
+				) {
+					if (statusEl instanceof HTMLElement) {
+						statusEl.textContent =
+							"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree o configura PUBLIC_FORMSPREE_ENDPOINT en Vercel.";
+						statusEl.className = "text-yellow-400 mt-4";
+					}
+					console.warn(
+						"[ContactForm] endpoint no configurado o placeholder:",
+						endpoint
+					);
+					return;
+				}
+
+				// Si endpoint no tiene http/https -> request relativo -> 404 en producción
+				if (!/^https?:\/\//i.test(endpoint)) {
+					if (statusEl instanceof HTMLElement) {
+						statusEl.textContent =
+							"El endpoint debe incluir el esquema (https://). Ej: https://formspree.io/f/xxxxx";
+						statusEl.className = "text-yellow-400 mt-4";
+					}
+					console.error(
+						"[ContactForm] endpoint inválido (falta http(s)://):",
+						endpoint
+					);
+					return;
+				}
+
 				form.addEventListener("submit", async (e) => {
 					e.preventDefault();
-
-					// Mensaje si aún no pegaste el endpoint
-					if (
-						!endpoint ||
-						endpoint.includes("https://formspree.io/f/xldprnjj")
-					) {
-						if (statusEl instanceof HTMLElement) {
-							statusEl.textContent =
-								"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree.";
-							statusEl.className = "text-yellow-400 mt-4";
-						}
-						return;
-					}
-
-					// Si endpoint no tiene http/https -> request relativo -> 404 en producción
-					if (!/^https?:\/\//i.test(endpoint)) {
-						if (statusEl instanceof HTMLElement) {
-							statusEl.textContent =
-								"El endpoint debe incluir el esquema (https://). Ej: https://formspree.io/f/xxxxx";
-							statusEl.className = "text-yellow-400 mt-4";
-						}
-						console.error(
-							"[ContactForm] endpoint inválido (falta http(s)://):",
-							endpoint
-						);
-						return;
-					}
 
 					// Lectura segura de inputs
 					const nameEl = form.querySelector("#name");
