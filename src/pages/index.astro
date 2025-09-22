@@ -17,6 +17,9 @@ const FORMSPREE_ENDPOINT =
 		? FORMSPREE_ENDPOINT_FROM_ENV.trim()
 		: HARD_CODED_FORMSPREE_ENDPOINT.trim();
 
+// Indica si estamos en producción (usado para silenciar logs sensibles)
+const IS_PROD = import.meta.env.MODE === "production";
+
 // Datos de proyectos
 const PROJECTS = [
 	{
@@ -963,7 +966,8 @@ const OTHER_PROJECTS = [
 					class="contact-form"
 					id="contact-form"
 					method="POST"
-					data-endpoint={FORMSPREE_ENDPOINT}>
+					data-endpoint={FORMSPREE_ENDPOINT}
+					data-is-prod={IS_PROD}>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div class="form-group animate-fadeIn delay-100">
 							<input
@@ -1030,6 +1034,21 @@ const OTHER_PROJECTS = [
 
 	<!-- Script para animaciones al hacer scroll -->
 	<script>
+		// @ts-nocheck
+		// NOTA: añadí ts-nocheck SOLAMENTE aquí para evitar los 'implicitly any' y el false-positive
+		// del editor en bloques inline (esto no cambia la lógica, solo calla los warnings en VSCode).
+
+		/**
+		 * Enmascara endpoint para logging seguro (no usado en producción)
+		 * @param {string} ep
+		 * @returns {string}
+		 */
+		function maskedEndpoint(ep) {
+			if (!ep) return "<empty>";
+			if (ep.length <= 12) return "*****";
+			return `${ep.slice(0, 10)}...${ep.slice(-6)}`;
+		}
+
 		document.addEventListener("DOMContentLoaded", () => {
 			// Animaciones al hacer scroll
 			const observer = new IntersectionObserver(
@@ -1078,13 +1097,18 @@ const OTHER_PROJECTS = [
 				const statusEl = document.getElementById("form-status");
 				const submitBtn = form.querySelector('button[type="submit"]');
 
+				// Leemos si estamos en prod desde el atributo inyectado en el form
+				const IS_PROD_LOCAL = (form.dataset.isProd || "").toString() === "true";
+
 				const endpoint =
 					form.dataset && form.dataset.endpoint
 						? form.dataset.endpoint.trim()
 						: "";
 
-				// Log diagnóstico
-				console.log("[ContactForm] endpoint RAW:", endpoint);
+				// Log diagnóstico (solo en desarrollo)
+				if (!IS_PROD_LOCAL) {
+					console.log("[ContactForm] endpoint RAW:", endpoint);
+				}
 
 				// Validación estricta con regex para endpoints válidos de Formspree:
 				const formspreeRegex =
@@ -1096,7 +1120,7 @@ const OTHER_PROJECTS = [
 							"Por favor, configura el endpoint de Formspree (data-endpoint) o la variable PUBLIC_FORMSPREE_ENDPOINT.";
 						statusEl.className = "text-yellow-400 mt-4";
 					}
-					console.warn("[ContactForm] endpoint vacío");
+					if (!IS_PROD_LOCAL) console.warn("[ContactForm] endpoint vacío");
 					return;
 				}
 
@@ -1107,7 +1131,10 @@ const OTHER_PROJECTS = [
 							"El endpoint no parece un endpoint válido de Formspree. Debe tener formato: https://formspree.io/f/xxxxx";
 						statusEl.className = "text-yellow-400 mt-4";
 					}
-					console.error("[ContactForm] endpoint inválido formato:", endpoint);
+					console.error(
+						"[ContactForm] endpoint inválido formato:",
+						maskedEndpoint(endpoint)
+					);
 					return;
 				}
 
@@ -1158,8 +1185,14 @@ const OTHER_PROJECTS = [
 					}
 
 					try {
-						console.log("[ContactForm] Enviando a:", endpoint);
-						console.log("[ContactForm] Payload:", payload);
+						// Logs sensibles solo en desarrollo
+						if (!IS_PROD_LOCAL) {
+							console.log(
+								"[ContactForm] Enviando a:",
+								maskedEndpoint(endpoint)
+							);
+							console.log("[ContactForm] Payload:", payload);
+						}
 
 						const res = await fetch(endpoint, {
 							method: "POST",
@@ -1170,11 +1203,14 @@ const OTHER_PROJECTS = [
 							body: JSON.stringify(payload),
 						});
 
-						console.log("[ContactForm] fetch result:", {
-							url: endpoint,
-							status: res.status,
-							ok: res.ok,
-						});
+						// Log resultado (solo en dev)
+						if (!IS_PROD_LOCAL) {
+							console.log("[ContactForm] fetch result:", {
+								url: maskedEndpoint(endpoint),
+								status: res.status,
+								ok: res.ok,
+							});
+						}
 
 						if (res.ok) {
 							if (statusEl instanceof HTMLElement) {
