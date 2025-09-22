@@ -1075,7 +1075,9 @@ const OTHER_PROJECTS = [
 
 				// Recuperar endpoint desde dataset del form
 				const endpoint =
-					form.dataset && form.dataset.endpoint ? form.dataset.endpoint : "";
+					form.dataset && form.dataset.endpoint
+						? form.dataset.endpoint.trim()
+						: "";
 
 				form.addEventListener("submit", async (e) => {
 					e.preventDefault();
@@ -1090,6 +1092,20 @@ const OTHER_PROJECTS = [
 								"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree.";
 							statusEl.className = "text-yellow-400 mt-4";
 						}
+						return;
+					}
+
+					// Si endpoint no tiene http/https -> request relativo -> 404 en producción
+					if (!/^https?:\/\//i.test(endpoint)) {
+						if (statusEl instanceof HTMLElement) {
+							statusEl.textContent =
+								"El endpoint debe incluir el esquema (https://). Ej: https://formspree.io/f/xxxxx";
+							statusEl.className = "text-yellow-400 mt-4";
+						}
+						console.error(
+							"[ContactForm] endpoint inválido (falta http(s)://):",
+							endpoint
+						);
 						return;
 					}
 
@@ -1138,6 +1154,10 @@ const OTHER_PROJECTS = [
 					}
 
 					try {
+						// Log de diagnóstico
+						console.log("[ContactForm] Enviando a:", endpoint);
+						console.log("[ContactForm] Payload:", payload);
+
 						const res = await fetch(endpoint, {
 							method: "POST",
 							headers: {
@@ -1145,6 +1165,13 @@ const OTHER_PROJECTS = [
 								Accept: "application/json",
 							},
 							body: JSON.stringify(payload),
+						});
+
+						// Siempre loguear status y url para debugging
+						console.log("[ContactForm] fetch result:", {
+							url: endpoint,
+							status: res.status,
+							ok: res.ok,
 						});
 
 						if (res.ok) {
@@ -1157,12 +1184,17 @@ const OTHER_PROJECTS = [
 							form.reset();
 						} else {
 							// Intentar leer respuesta JSON con error
-							let errMsg = "Error al enviar el formulario. Intenta nuevamente.";
+							let text = "";
 							try {
-								const data = await res.json();
-								if (data && data.error) errMsg = data.error;
+								text = await res.text();
 							} catch (err) {
-								/* ignore JSON parse error */
+								text = "<no body>";
+							}
+							console.error("[ContactForm] error response:", res.status, text);
+							let errMsg = `Error al enviar el formulario (status ${res.status}). Revisa la consola para más detalles.`;
+							if (res.status === 404) {
+								errMsg =
+									"404: Endpoint no encontrado. Verifica que el 'data-endpoint' esté correctamente escrito y comience con https://formspree.io/f/...";
 							}
 							if (statusEl instanceof HTMLElement) {
 								statusEl.textContent = errMsg;
@@ -1170,9 +1202,10 @@ const OTHER_PROJECTS = [
 							}
 						}
 					} catch (error) {
+						console.error("[ContactForm] network error:", error);
 						if (statusEl instanceof HTMLElement) {
 							statusEl.textContent =
-								"Error de red al enviar. Revisa tu conexión e inténtalo de nuevo.";
+								"Error de red al enviar. Revisa la consola y tu endpoint.";
 							statusEl.className = "text-red-400 mt-4";
 						}
 					} finally {
