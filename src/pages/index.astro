@@ -7,10 +7,10 @@ import Layout from "../layouts/Layout.astro";
 // Datos de proyectos
 const PROJECTS = [
 	{
-		title: "Mechanic Workshop Booking System",
+		title: "Mechanic Workshop — Shift-Application",
 		urlImg: "/Turnos -Taller Mecánica.png",
 		description:
-			"Sistema de gestión de citas para talleres mecánicos con roles de usuario y confirmaciones automáticas por email.",
+			"Sistema de gestión de citas para talleres mecánicos con roles (admin/empleado/cliente), confirmaciones automáticas por email y panel administrativo. Desarrollo end-to-end y despliegue en producción.",
 		link: "https://shift-application-1iwg.vercel.app",
 		technologies: [
 			"React",
@@ -18,15 +18,42 @@ const PROJECTS = [
 			"PostgreSQL",
 			"TypeORM",
 			"TypeScript",
-			"CSS3",
-			"HTML5",
+			"JWT",
+			"Nodemailer",
+			"Vercel",
+			"Render",
 		],
 	},
 	{
-		title: "Rick and Morty APP",
+		title: "The Next Page — Plataforma / E-commerce (Demo)",
+		urlImg: "/project2(2).jpg", // usa tu imagen o reemplaza con /nextpage-demo.png si la subís
+		description:
+			"Demo e-commerce orientado a flujo de compra y checkout. Mi rol principal: Desarrollador Backend — diseño de API, modelado de órdenes y integración con proveedores de pago (Mercado Pago / Stripe).",
+		link: "https://the-next-page.vercel.app/home",
+		technologies: [
+			"Node.js",
+			"Express",
+			"MongoDB",
+			"Mongoose",
+			"Webhooks",
+			"Mercado Pago",
+			"Stripe",
+			"Vercel",
+		],
+	},
+	{
+		title: "Foro-Hub — Proyecto Oracle ONE (Backend Java)",
+		urlImg: "/forohub.png",
+		description:
+			"Foro web desarrollado como parte de Oracle ONE. Enfoque backend con Java y Spring Boot, endpoints para temas/comentarios y persistencia en MySQL; pruebas unitarias y documentación para evaluación técnica.",
+		link: "https://github.com/Pablo-Andrada/Foro-Hub",
+		technologies: ["Java", "Spring Boot", "MySQL", "Swagger", "JUnit"],
+	},
+	{
+		title: "Rick & Morty App",
 		urlImg: "/image.png",
 		description:
-			"Exploración de personajes mediante API con vista detallada, filtrado y formulario de acceso.",
+			"Explorador de personajes que consume API externa con búsqueda, filtros, paginación y manejo de estado. Enfocado en experiencia frontend y rendimiento.",
 		link: "https://rick-and-morty-project-zeta-one.vercel.app",
 		technologies: ["React", "API Integration", "JavaScript", "CSS3", "HTML5"],
 	},
@@ -34,7 +61,7 @@ const PROJECTS = [
 		title: "Movie Search App",
 		urlImg: "/project2(2).jpg",
 		description:
-			"Buscador de películas con detalles de sinopsis y año de lanzamiento.",
+			"Buscador de películas con detalles de sinopsis y año de lanzamiento; demo desplegado y repo público.",
 		link: "https://movie-search-app-ffeh.vercel.app",
 		technologies: ["React", "API Integration", "CSS3", "HTML5"],
 	},
@@ -43,16 +70,29 @@ const PROJECTS = [
 // Datos de experiencia
 const EXPERIENCE = [
 	{
-		period: "2024 - Presente",
-		position: "Desarrollador Full Stack",
+		period: "Dic 2024 - May 2025",
+		position:
+			"Desarrollador Fullstack (Backend lead) — Mechanic Workshop (Contrato temporal)",
 		description:
-			"Desarrollo de aplicaciones web personalizadas para diversos clientes, implementando soluciones escalables y mantenibles.",
+			"Responsable del desarrollo end-to-end del sistema de gestión de turnos: API REST (Node.js + Express + TypeORM) sobre PostgreSQL, autenticación/roles con JWT, frontend React (Context API), notificaciones por email (Nodemailer), documentación (README + Postman) y despliegues automáticos (Vercel / Render). Solución en uso diario por el cliente (~50–150 reservas/mes, estimado conservador).",
 	},
 	{
-		period: "2023 - 2024",
-		position: "Desarrollador Backend en The Next Page",
+		period: "Oct 2023 - Dic 2023",
+		position: "Desarrollador Backend — The Next Page (Contrato temporal)",
 		description:
-			"Implementación de e-commerce para venta de libros con integración de Mercado Pago y envío de emails con Nodemailer.",
+			"Rol principal en backend del demo e-commerce: rutas para catálogo, carrito y órdenes; modelado en MongoDB (Mongoose); integración de pagos y webhooks; autenticación y manejo de errores; despliegue del demo en Vercel.",
+	},
+	{
+		period: "Jul 2023 - Ago 2023",
+		position: "Programador Fullstack — Henry (Proyecto individual)",
+		description:
+			"Proyecto individual fullstack: frontend en React + Redux y backend en Node.js + Express con Sequelize y PostgreSQL; endpoints CRUD, paginación, filtros y demo funcional.",
+	},
+	{
+		period: "Oct 2014 - Presente",
+		position: "Especialista en soporte técnico — Apex America",
+		description:
+			"Atención de alto volumen, documentación de procesos, gestión de tickets y coordinación con equipos internos. Habilidades transferibles a soporte post-deploy y trabajo cross-team.",
 	},
 ];
 
@@ -61,7 +101,7 @@ const OTHER_PROJECTS = [
 	{
 		title: "ConversorDeMonedas",
 		link: "https://github.com/Pablo-Andrada/ConversorDeMonedas_ONE",
-		technologies: ["JAVA", "API", "POO"],
+		technologies: ["Java", "API", "POO"],
 		color: "#f89820", // Naranja JAVA
 		icon: `<path d="M10.25 2.5c.918 0 1.75.82 1.75 1.857v.554c.71.153 1.371.443 1.958.854l.545-1.632a.5.5 0 0 1 .632-.316l1.498.5a.5.5 0 0 1 .316.633l-.5 1.498a6.6 6.6 0 0 1 1.434 1.055l1.415-1.124a.5.5 0 0 1 .7.078l1.06 1.325a.5.5 0 0 1-.077.7l-1.326 1.06a6.6 6.6 0 0 1 .001 2.37l1.326 1.06a.5.5 0 0 1 .077.7l-1.06 1.325a.5.5 0 0 1-.7.078l-1.415-1.124a6.6 6.6 0 0 1-1.434 1.055l.5 1.498a.5.5 0 0 1-.316.633l-1.498.5a.5.5 0 0 1-.633-.316l-.545-1.632a6.6 6.6 0 0 1-1.958.854v.554c0 1.037-.832 1.857-1.75 1.857h-2.5c-.918 0-1.75-.82-1.75-1.857v-.554a6.6 6.6 0 0 1-1.958-.854l-.545 1.632a.5.5 0 0 1-.633.316l-1.498-.5a.5.5 0 0 1-.316-.633l.5-1.498a6.6 6.6 0 0 1-1.434-1.055l-1.415 1.124a.5.5 0 0 1-.7-.078l-1.06-1.325a.5.5 0 0 1 .077-.7l1.326-1.06a6.6 6.6 0 0 1 0-2.37l-1.326-1.06a.5.5 0 0 1-.077-.7l1.06-1.325a.5.5 0 0 1 .7-.078l1.415 1.124a6.6 6.6 0 0 1 1.434-1.055l-.5-1.498a.5.5 0 0 1 .316-.633l1.498-.5a.5.5 0 0 1 .633.316l.545 1.632a6.6 6.6 0 0 1 1.958-.854v-.554c0-1.037.832-1.857 1.75-1.857h2.5zm-1.25 1.857a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25v5.643c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V4.357z"/>`,
 	},
@@ -87,7 +127,7 @@ const OTHER_PROJECTS = [
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm1.678 3.044c.369 0 .666.297.666.666v8.667a.666.666 0 01-1.332 0V7.71c0-.369.297-.666.666-.666zm-3.333 1.333c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666zm6.667 0c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666z"/>`,
 	},
 	{
-		title: "SubscriptionPlataformTracker",
+		title: "SubscriptionPlatformTracker",
 		link: "https://github.com/Pablo-Andrada/Subscription-Platform-Tracker",
 		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
 		color: "#61dafb", // Azul React
@@ -96,7 +136,7 @@ const OTHER_PROJECTS = [
 	{
 		title: "ToDoListApp-TS",
 		link: "https://github.com/Pablo-Andrada/ToDoList-App-Ts/tree/main",
-		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
+		technologies: ["TypeScript", "React", "HTML5", "CSS3"],
 		color: "#764abc", // Púrpura Redux
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm-1 3h2v6h-2V7zm3 0h2v6h-2V7zm-6 0h2v6H8V7z"/>`,
 	},
@@ -625,7 +665,7 @@ const OTHER_PROJECTS = [
 					const posY = Math.random() * 100;
 
 					// Duración aleatoria entre 6s y 12s
-					const randomDuration = (Math.random() * 6 + 6).toFixed(2) + "s";
+					const randomDuration = (Math.random() * 6 + 6).toFixed(02) + "s";
 
 					particle.style.width = `${size}px`;
 					particle.style.height = `${size}px`;
@@ -749,7 +789,7 @@ const OTHER_PROJECTS = [
 									<li>TypeORM</li>
 									<li>MongoDB</li>
 									<li>PostgreSQL</li>
-									<li>Supabase</li>
+									<li>Java · Spring Boot (en formación)</li>
 								</ul>
 							</div>
 
@@ -783,6 +823,19 @@ const OTHER_PROJECTS = [
 							<div>
 								<div class="font-bold">Desarrollador Full Stack</div>
 								<div class="text-gray-300">HENRY Academy (2023)</div>
+							</div>
+
+							<!-- SECCIÓN IDIOMAS AÑADIDA -->
+							<div class="mt-6">
+								<h4 class="text-lg font-bold mb-2 text-indigo-300">Idiomas</h4>
+								<div class="text-gray-300">
+									<ul>
+										<li>
+											Inglés: B2 Upper Intermediate — EF SET English Certificate
+										</li>
+										<li>Español: Nativo</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
