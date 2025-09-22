@@ -1081,7 +1081,10 @@ const OTHER_PROJECTS = [
 					e.preventDefault();
 
 					// Mensaje si aún no pegaste el endpoint
-					if (!endpoint || endpoint.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
+					if (
+						!endpoint ||
+						endpoint.includes("https://formspree.io/f/xldprnjj")
+					) {
 						if (statusEl instanceof HTMLElement) {
 							statusEl.textContent =
 								"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree.";
