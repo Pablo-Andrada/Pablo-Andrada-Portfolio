@@ -1,4 +1,4 @@
-// src/pages/index.astro
+---
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
@@ -140,6 +140,7 @@ const OTHER_PROJECTS = [
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm-1 3h2v6h-2V7zm3 0h2v6h-2V7zm-6 0h2v6H8V7z"/>`,
 	},
 ];
+---
 
 <style is:global>
 	/* Variables globales */
@@ -747,7 +748,7 @@ const OTHER_PROJECTS = [
 								EXPERIENCE.map((exp, index) => (
 									<div
 										class="timeline-item animate-fadeIn"
-										style={`animation-delay: ${0.2 * index}s`}> 
+										style={`animation-delay: ${0.2 * index}s`}>
 										<div class="timeline-period">{exp.period}</div>
 										<div class="timeline-position">{exp.position}</div>
 										<p class="text-gray-300">{exp.description}</p>
@@ -852,7 +853,7 @@ const OTHER_PROJECTS = [
 					PROJECTS.map((project, index) => (
 						<div
 							class="project-card animate-fadeIn"
-							style={`animation-delay: ${0.2 * index}s`}> 
+							style={`animation-delay: ${0.2 * index}s`}>
 							<div class="project-image">
 								<img src={project.urlImg} alt={project.title} />
 							</div>
@@ -890,7 +891,7 @@ const OTHER_PROJECTS = [
 					OTHER_PROJECTS.map((project, index) => (
 						<div
 							class="other-project-card animate-fadeIn"
-							style={`animation-delay: ${0.1 * index}s`}> 
+							style={`animation-delay: ${0.1 * index}s`}>
 							<div class="other-project-image">
 								<div class="project-svg" style={`background: ${project.color}`}>
 									<svg
@@ -948,31 +949,58 @@ const OTHER_PROJECTS = [
 					class="contact-form"
 					id="contact-form"
 					method="POST"
-					data-endpoint="YOUR_FORMSPREE_ENDPOINT_HERE"
-				>
+					data-endpoint="YOUR_FORMSPREE_ENDPOINT_HERE">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div class="form-group animate-fadeIn delay-100">
-							<input type="text" id="name" name="name" placeholder=" " required />
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder=" "
+								required
+							/>
 							<label for="name">Nombre</label>
 						</div>
 
 						<div class="form-group animate-fadeIn delay-200">
-							<input type="email" id="email" name="email" placeholder=" " required />
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder=" "
+								required
+							/>
 							<label for="email">Email</label>
 						</div>
 					</div>
 
 					<div class="form-group animate-fadeIn delay-300">
-						<input type="text" id="subject" name="subject" placeholder=" " required />
+						<input
+							type="text"
+							id="subject"
+							name="subject"
+							placeholder=" "
+							required
+						/>
 						<label for="subject">Asunto</label>
 					</div>
 
 					<div class="form-group animate-fadeIn delay-400">
-						<textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+						<textarea
+							id="message"
+							name="message"
+							rows="5"
+							placeholder=" "
+							required></textarea>
 						<label for="message">Mensaje</label>
 					</div>
 
-					<div id="form-status" class="text-center mb-4" role="status" aria-live="polite"></div>
+					<div
+						id="form-status"
+						class="text-center mb-4"
+						role="status"
+						aria-live="polite">
+					</div>
 
 					<div class="text-center animate-fadeIn delay-500">
 						<button type="submit" class="btn px-10 py-3">
@@ -1046,7 +1074,8 @@ const OTHER_PROJECTS = [
 				const submitBtn = form.querySelector('button[type="submit"]');
 
 				// Recuperar endpoint desde dataset del form
-				const endpoint = form.dataset && form.dataset.endpoint ? form.dataset.endpoint : "";
+				const endpoint =
+					form.dataset && form.dataset.endpoint ? form.dataset.endpoint : "";
 
 				form.addEventListener("submit", async (e) => {
 					e.preventDefault();
@@ -1067,15 +1096,22 @@ const OTHER_PROJECTS = [
 					const subjectEl = form.querySelector("#subject");
 					const messageEl = form.querySelector("#message");
 
-					const name = nameEl instanceof HTMLInputElement ? nameEl.value.trim() : "";
-					const email = emailEl instanceof HTMLInputElement ? emailEl.value.trim() : "";
-					const subject = subjectEl instanceof HTMLInputElement ? subjectEl.value.trim() : "";
-					const message = messageEl instanceof HTMLTextAreaElement ? messageEl.value.trim() : "";
+					const name =
+						nameEl instanceof HTMLInputElement ? nameEl.value.trim() : "";
+					const email =
+						emailEl instanceof HTMLInputElement ? emailEl.value.trim() : "";
+					const subject =
+						subjectEl instanceof HTMLInputElement ? subjectEl.value.trim() : "";
+					const message =
+						messageEl instanceof HTMLTextAreaElement
+							? messageEl.value.trim()
+							: "";
 
 					// Validación mínima
 					if (!name || !email || !message) {
 						if (statusEl instanceof HTMLElement) {
-							statusEl.textContent = "Completa los campos requeridos antes de enviar.";
+							statusEl.textContent =
+								"Completa los campos requeridos antes de enviar.";
 							statusEl.className = "text-yellow-400 mt-4";
 						}
 						return;
@@ -1110,7 +1146,8 @@ const OTHER_PROJECTS = [
 
 						if (res.ok) {
 							if (statusEl instanceof HTMLElement) {
-								statusEl.textContent = "¡Mensaje enviado! Gracias, te responderé pronto.";
+								statusEl.textContent =
+									"¡Mensaje enviado! Gracias, te responderé pronto.";
 								statusEl.className = "text-green-400 mt-4";
 							}
 							// form es HTMLFormElement, reset() es seguro
