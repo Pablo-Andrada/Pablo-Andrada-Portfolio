@@ -318,10 +318,7 @@ const OTHER_PROJECTS = [
 					e.preventDefault();
 
 					// Si no pusiste endpoint real, avisar
-					if (
-						!endpoint ||
-						endpoint.includes("https://formspree.io/f/xldprnjj")
-					) {
+					if (!endpoint || endpoint.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
 						if (statusEl instanceof HTMLElement) {
 							statusEl.textContent =
 								"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree.";
