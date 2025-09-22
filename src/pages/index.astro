@@ -4,8 +4,18 @@ import Navbar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 
 // Si estás en Vercel -> define PUBLIC_FORMSPREE_ENDPOINT en Environment Variables
+const FORMSPREE_ENDPOINT_FROM_ENV =
+	import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? "";
+
+// Hardcode temporal para pruebas (reemplazá con tu endpoint si querés testear rápido)
+// Ej: "https://formspree.io/f/xldprnjj"
+const HARD_CODED_FORMSPREE_ENDPOINT = "YOUR_FORMSPREE_ENDPOINT_HERE";
+
+// Prioriza env var; si no existe, usa el hardcode.
 const FORMSPREE_ENDPOINT =
-	import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? "YOUR_FORMSPREE_ENDPOINT_HERE";
+	FORMSPREE_ENDPOINT_FROM_ENV && FORMSPREE_ENDPOINT_FROM_ENV.trim() !== ""
+		? FORMSPREE_ENDPOINT_FROM_ENV.trim()
+		: HARD_CODED_FORMSPREE_ENDPOINT.trim();
 
 // Datos de proyectos
 const PROJECTS = [
@@ -105,7 +115,7 @@ const OTHER_PROJECTS = [
 		title: "ConversorDeMonedas",
 		link: "https://github.com/Pablo-Andrada/ConversorDeMonedas_ONE",
 		technologies: ["Java", "API", "POO"],
-		color: "#f89820", // Naranja JAVA
+		color: "#f89820",
 		icon: `<path d="M10.25 2.5c.918 0 1.75.82 1.75 1.857v.554c.71.153 1.371.443 1.958.854l.545-1.632a.5.5 0 0 1 .632-.316l1.498.5a.5.5 0 0 1 .316.633l-.5 1.498a6.6 6.6 0 0 1 1.434 1.055l1.415-1.124a.5.5 0 0 1 .7.078l1.06 1.325a.5.5 0 0 1-.077.7l-1.326 1.06a6.6 6.6 0 0 1 .001 2.37l1.326 1.06a.5.5 0 0 1 .077.7l-1.06 1.325a.5.5 0 0 1-.7.078l-1.415-1.124a6.6 6.6 0 0 1-1.434 1.055l.5 1.498a.5.5 0 0 1-.316.633l-1.498.5a.5.5 0 0 1-.633-.316l-.545-1.632a6.6 6.6 0 0 1-1.958.854v.554c0 1.037-.832 1.857-1.75 1.857h-2.5c-.918 0-1.75-.82-1.75-1.857v-.554a6.6 6.6 0 0 1-1.958-.854l-.545 1.632a.5.5 0 0 1-.633.316l-1.498-.5a.5.5 0 0 1-.316-.633l.5-1.498a6.6 6.6 0 0 1-1.434-1.055l-1.415 1.124a.5.5 0 0 1-.7-.078l-1.06-1.325a.5.5 0 0 1 .077-.7l1.326-1.06a6.6 6.6 0 0 1 0-2.37l-1.326-1.06a.5.5 0 0 1-.077-.7l1.06-1.325a.5.5 0 0 1 .7-.078l1.415 1.124a6.6 6.6 0 0 1 1.434-1.055l-.5-1.498a.5.5 0 0 1 .316-.633l1.498-.5a.5.5 0 0 1 .633.316l.545 1.632a6.6 6.6 0 0 1 1.958-.854v-.554c0-1.037.832-1.857 1.75-1.857h2.5zm-1.25 1.857a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25v5.643c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V4.357z"/>`,
 	},
 	{
@@ -119,28 +129,28 @@ const OTHER_PROJECTS = [
 			"Mongoose",
 			"MongoDB",
 		],
-		color: "#3178c6", // Azul TypeScript
+		color: "#3178c6",
 		icon: `<path d="M22.2 12c0-5.5-4.5-10-10-10S2.2 6.5 2.2 12s4.5 10 10 10 10-4.5 10-10zm-16.9.9V8.2h1.5c.6 0 1.2.1 1.6.3.4.2.7.5 1 .9.2.3.3.7.3 1.1 0 .4-.1.8-.3 1.1-.2.3-.5.6-.9.8-.4.2-.9.3-1.4.3h-.8v-1.8zm1.5-3.4v3.4h.4c.3 0 .6 0 .9-.1.3-.1.5-.2.7-.4.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.7-.2-.2-.4-.3-.7-.4-.3-.1-.6-.1-.9-.1h-.4zm5.2 3.4V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.2 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm3.3 0V8.2h1.6v.9h-1v.9h.9v.9h-.9v.9h1v.9h-1.6zm-8.3 3.4V14h4.4v1.8h-4.4z"/>`,
 	},
 	{
 		title: "LoanCalculatorApp",
 		link: "https://github.com/Pablo-Andrada/Loan-Calculator-App",
 		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
-		color: "#f0db4f", // Amarillo JavaScript.
+		color: "#f0db4f",
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm1.678 3.044c.369 0 .666.297.666.666v8.667a.666.666 0 01-1.332 0V7.71c0-.369.297-.666.666-.666zm-3.333 1.333c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666zm6.667 0c.369 0 .666.297.666.666v7.334a.666.666 0 01-1.332 0V9.043c0-.369.297-.666.666-.666z"/>`,
 	},
 	{
 		title: "SubscriptionPlatformTracker",
 		link: "https://github.com/Pablo-Andrada/Subscription-Platform-Tracker",
 		technologies: ["JavaScript", "React", "HTML5", "CSS3"],
-		color: "#61dafb", // Azul React
+		color: "#61dafb",
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S5.5 15.59 5.5 12 8.41 5.5 12 5.5zm0 2c2.485 0 4.5 2.015 4.5 4.5s-2.015 4.5-4.5 4.5S7.5 14.485 7.5 12 9.515 7.5 12 7.5zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/>`,
 	},
 	{
 		title: "ToDoListApp-TS",
 		link: "https://github.com/Pablo-Andrada/ToDoList-App-Ts/tree/main",
 		technologies: ["TypeScript", "React", "HTML5", "CSS3"],
-		color: "#764abc", // Púrpura Redux
+		color: "#764abc",
 		icon: `<path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm-1 3h2v6h-2V7zm3 0h2v6h-2V7zm-6 0h2v6H8V7z"/>`,
 	},
 ];
@@ -1018,7 +1028,7 @@ const OTHER_PROJECTS = [
 
 	<Footer />
 
-	<!-- Script para animaciones al hacer scroll - CORREGIDO PARA VERCEL -->
+	<!-- Script para animaciones al hacer scroll -->
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			// Animaciones al hacer scroll
@@ -1037,23 +1047,16 @@ const OTHER_PROJECTS = [
 				observer.observe(el);
 			});
 
-			// Scroll suave para enlaces internos - CORRECCIÓN PARA VERCEL
+			// Scroll suave para enlaces internos
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 				anchor.addEventListener("click", (e) => {
 					e.preventDefault();
-
-					// Corrección 1: Verificar que es un elemento HTML
 					const element = e.currentTarget;
 					if (!element || !(element instanceof HTMLElement)) return;
-
-					// Corrección 2: Obtener el href
 					const targetId = element.getAttribute("href");
 					if (!targetId) return;
-
-					// Corrección 3: Buscar el elemento y verificar que es HTMLElement
 					const targetElement = document.querySelector(targetId);
 					if (targetElement instanceof HTMLElement) {
-						// Corrección 4: Usar offsetTop solo si es HTMLElement
 						window.scrollTo({
 							top: targetElement.offsetTop - 80,
 							behavior: "smooth",
@@ -1064,68 +1067,51 @@ const OTHER_PROJECTS = [
 
 			/* -----------------------------
 				FORMSPREE: manejo de envío
-				- El formulario tiene el atributo data-endpoint con tu URL de Formspree.
-				- Reemplaza "YOUR_FORMSPREE_ENDPOINT_HERE" por la URL real que te dieron
-				  o define PUBLIC_FORMSPREE_ENDPOINT en Vercel.
-				- El script envía JSON y muestra mensajes de estado.
+				- El formulario tiene data-endpoint con tu URL de Formspree.
+				- Validación corregida: ahora acepta endpoints reales con formato:
+				  https://formspree.io/f/<id>
 			------------------------------*/
 			(function setupContactForm() {
 				const formEl = document.getElementById("contact-form");
-				// Asegurar que realmente sea un HTMLFormElement antes de usar .reset() / .dataset
 				if (!(formEl instanceof HTMLFormElement)) return;
-				const form = formEl; // ahora es tipo HTMLFormElement
-
+				const form = formEl;
 				const statusEl = document.getElementById("form-status");
 				const submitBtn = form.querySelector('button[type="submit"]');
 
-				// Recuperar endpoint desde dataset del form (trim para seguridad)
 				const endpoint =
 					form.dataset && form.dataset.endpoint
 						? form.dataset.endpoint.trim()
 						: "";
 
-				// LOG diagnóstico (ver en consola)
+				// Log diagnóstico
 				console.log("[ContactForm] endpoint RAW:", endpoint);
 
-				// Detectar placeholders comunes
-				const placeholderExamples = [
-					"YOUR_FORMSPREE_ENDPOINT_HERE",
-					"https://formspree.io/f/xldprnjj",
-					"https://formspree.io/f/xxxxx",
-				];
+				// Validación estricta con regex para endpoints válidos de Formspree:
+				const formspreeRegex =
+					/^https?:\/\/formspree\.io\/f\/[A-Za-z0-9\-_]+$/i;
 
-				if (
-					!endpoint ||
-					placeholderExamples.some((p) =>
-						endpoint.toLowerCase().includes(p.toLowerCase())
-					)
-				) {
+				if (!endpoint) {
 					if (statusEl instanceof HTMLElement) {
 						statusEl.textContent =
-							"Por favor, reemplaza data-endpoint en el formulario con tu endpoint de Formspree o configura PUBLIC_FORMSPREE_ENDPOINT en Vercel.";
+							"Por favor, configura el endpoint de Formspree (data-endpoint) o la variable PUBLIC_FORMSPREE_ENDPOINT.";
 						statusEl.className = "text-yellow-400 mt-4";
 					}
-					console.warn(
-						"[ContactForm] endpoint no configurado o placeholder:",
-						endpoint
-					);
+					console.warn("[ContactForm] endpoint vacío");
 					return;
 				}
 
-				// Si endpoint no tiene http/https -> request relativo -> 404 en producción
-				if (!/^https?:\/\//i.test(endpoint)) {
+				// Si no cumple el patrón de Formspree, mostramos mensaje útil
+				if (!formspreeRegex.test(endpoint)) {
 					if (statusEl instanceof HTMLElement) {
 						statusEl.textContent =
-							"El endpoint debe incluir el esquema (https://). Ej: https://formspree.io/f/xxxxx";
+							"El endpoint no parece un endpoint válido de Formspree. Debe tener formato: https://formspree.io/f/xxxxx";
 						statusEl.className = "text-yellow-400 mt-4";
 					}
-					console.error(
-						"[ContactForm] endpoint inválido (falta http(s)://):",
-						endpoint
-					);
+					console.error("[ContactForm] endpoint inválido formato:", endpoint);
 					return;
 				}
 
+				// Si llegamos acá, endpoint parece válido -> continuamos
 				form.addEventListener("submit", async (e) => {
 					e.preventDefault();
 
@@ -1156,7 +1142,6 @@ const OTHER_PROJECTS = [
 						return;
 					}
 
-					// Preparar payload
 					const payload = {
 						name,
 						email,
@@ -1164,7 +1149,6 @@ const OTHER_PROJECTS = [
 						message,
 					};
 
-					// UI: deshabilitar botón mientras se envía (solo si es HTMLButtonElement)
 					if (submitBtn instanceof HTMLButtonElement) {
 						submitBtn.disabled = true;
 						submitBtn.textContent = "Enviando...";
@@ -1174,7 +1158,6 @@ const OTHER_PROJECTS = [
 					}
 
 					try {
-						// Log de diagnóstico
 						console.log("[ContactForm] Enviando a:", endpoint);
 						console.log("[ContactForm] Payload:", payload);
 
@@ -1187,7 +1170,6 @@ const OTHER_PROJECTS = [
 							body: JSON.stringify(payload),
 						});
 
-						// Siempre loguear status y url para debugging
 						console.log("[ContactForm] fetch result:", {
 							url: endpoint,
 							status: res.status,
@@ -1200,10 +1182,8 @@ const OTHER_PROJECTS = [
 									"¡Mensaje enviado! Gracias, te responderé pronto.";
 								statusEl.className = "text-green-400 mt-4";
 							}
-							// form es HTMLFormElement, reset() es seguro
 							form.reset();
 						} else {
-							// Intentar leer respuesta JSON con error
 							let text = "";
 							try {
 								text = await res.text();
